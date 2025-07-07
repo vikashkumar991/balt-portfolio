@@ -2,6 +2,85 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Calendar, MapPin, Briefcase, Award } from 'lucide-react';
 
+const MapEffect: React.FC = () => (
+  <div className="absolute inset-0 w-full h-full pointer-events-none z-0">
+    {/* Map Grid Lines */}
+    <svg className="absolute inset-0 w-full h-full opacity-20" viewBox="0 0 1000 1000">
+      {/* Horizontal Lines */}
+      {[...Array(20)].map((_, i) => (
+        <line
+          key={`h-${i}`}
+          x1="0"
+          y1={i * 50}
+          x2="1000"
+          y2={i * 50}
+          stroke="#ff6b35"
+          strokeWidth="1"
+          strokeDasharray="5,5"
+          opacity="0.3"
+        />
+      ))}
+      {/* Vertical Lines */}
+      {[...Array(20)].map((_, i) => (
+        <line
+          key={`v-${i}`}
+          x1={i * 50}
+          y1="0"
+          x2={i * 50}
+          y2="1000"
+          stroke="#ff8c42"
+          strokeWidth="1"
+          strokeDasharray="5,5"
+          opacity="0.3"
+        />
+      ))}
+      {/* Map Markers */}
+      {[...Array(8)].map((_, i) => (
+        <circle
+          key={`marker-${i}`}
+          cx={100 + i * 120}
+          cy={200 + (i % 3) * 200}
+          r="8"
+          fill="#ff6b35"
+          opacity="0.6"
+          className="animate-pulse"
+        />
+      ))}
+    </svg>
+    
+    {/* Animated Map Paths */}
+    <svg className="absolute inset-0 w-full h-full opacity-30" viewBox="0 0 1000 1000">
+      <path
+        d="M100,200 Q300,100 500,200 T900,300"
+        stroke="#ff6b35"
+        strokeWidth="3"
+        fill="none"
+        strokeDasharray="10,5"
+        className="animate-map-path"
+      />
+      <path
+        d="M200,400 Q400,300 600,400 T800,500"
+        stroke="#ff8c42"
+        strokeWidth="3"
+        fill="none"
+        strokeDasharray="10,5"
+        className="animate-map-path"
+        style={{ animationDelay: '1s' }}
+      />
+    </svg>
+    
+    <style>{`
+      @keyframes map-path {
+        0% { stroke-dashoffset: 100; }
+        100% { stroke-dashoffset: 0; }
+      }
+      .animate-map-path {
+        animation: map-path 4s linear infinite;
+      }
+    `}</style>
+  </div>
+);
+
 const Experience = () => {
   const experiences = [
     {
@@ -82,6 +161,8 @@ const Experience = () => {
           ))}
         </div>
       </div>
+      
+      <MapEffect />
       
       <div className="container mx-auto px-6 relative z-10">
         <motion.div

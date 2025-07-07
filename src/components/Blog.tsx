@@ -33,6 +33,63 @@ const SmokeEffect: React.FC = () => (
   </div>
 );
 
+const FloatingBubbles: React.FC = () => (
+  <div className="absolute inset-0 w-full h-full pointer-events-none z-0">
+    {[...Array(15)].map((_, i) => (
+      <div
+        key={i}
+        className="floating-bubble"
+        style={{
+          left: `${Math.random() * 100}%`,
+          animationDelay: `${Math.random() * 5}s`,
+          animationDuration: `${8 + Math.random() * 4}s`,
+        }}
+      >
+        <div 
+          className="bubble-inner"
+          style={{
+            width: 20 + Math.random() * 40,
+            height: 20 + Math.random() * 40,
+          }}
+        />
+      </div>
+    ))}
+    <style>{`
+      .floating-bubble {
+        position: absolute;
+        bottom: -50px;
+        animation: bubble-float linear infinite;
+      }
+      .bubble-inner {
+        background: radial-gradient(circle at 30% 30%, 
+          rgba(255, 107, 53, 0.3), 
+          rgba(255, 140, 66, 0.2), 
+          rgba(255, 165, 102, 0.1)
+        );
+        border-radius: 50%;
+        filter: blur(2px);
+        opacity: 0.6;
+      }
+      @keyframes bubble-float {
+        0% { 
+          transform: translateY(0) translateX(0) scale(0.8); 
+          opacity: 0; 
+        }
+        10% { 
+          opacity: 0.6; 
+        }
+        90% { 
+          opacity: 0.6; 
+        }
+        100% { 
+          transform: translateY(-100vh) translateX(50px) scale(1.2); 
+          opacity: 0; 
+        }
+      }
+    `}</style>
+  </div>
+);
+
 const Blog = () => {
   const blogPosts = [
     {
@@ -124,6 +181,7 @@ const Blog = () => {
       </div>
       
       <SmokeEffect />
+      <FloatingBubbles />
       
       <div className="container mx-auto px-6 relative z-10">
         <motion.div

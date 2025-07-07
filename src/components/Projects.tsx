@@ -2,6 +2,45 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { ExternalLink, Github, Zap, Code, Server } from 'lucide-react';
 
+const OrangeThunder: React.FC = () => (
+  <div className="absolute inset-0 w-full h-full pointer-events-none z-0">
+    {[...Array(12)].map((_, i) => (
+      <div
+        key={i}
+        className="thunder-bolt-orange"
+        style={{
+          left: `${Math.random() * 100}%`,
+          animationDelay: `${Math.random() * 5}s`,
+          animationDuration: `${0.3 + Math.random() * 0.5}s`
+        }}
+      />
+    ))}
+    <style>{`
+      .thunder-bolt-orange {
+        position: absolute;
+        width: 3px;
+        height: 100%;
+        background: linear-gradient(to bottom, 
+          transparent, 
+          rgba(255, 107, 53, 0.9), 
+          rgba(255, 140, 66, 0.7), 
+          rgba(255, 165, 102, 0.5),
+          transparent
+        );
+        animation: thunder-strike infinite;
+        opacity: 0;
+        box-shadow: 0 0 10px rgba(255, 107, 53, 0.8);
+      }
+      @keyframes thunder-strike {
+        0%, 90%, 100% { opacity: 0; }
+        5%, 10% { opacity: 1; }
+        15% { opacity: 0.7; }
+        20% { opacity: 0; }
+      }
+    `}</style>
+  </div>
+);
+
 const Projects = () => {
   const projects = [
     {
@@ -97,6 +136,8 @@ const Projects = () => {
           ))}
         </div>
       </div>
+
+      <OrangeThunder />
 
       <div className="container mx-auto px-6 relative z-10">
         <motion.div
