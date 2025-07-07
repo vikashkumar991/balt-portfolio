@@ -1,0 +1,202 @@
+import React from 'react';
+import { motion } from 'framer-motion';
+import { Calendar, MapPin, Briefcase, Award } from 'lucide-react';
+
+const CloudBackground: React.FC = () => (
+  <div className="absolute inset-0 w-full h-full pointer-events-none z-0">
+    {[...Array(5)].map((_, i) => (
+      <svg
+        key={i}
+        className="absolute animate-cloud"
+        style={{
+          top: `${10 + i * 15}%`,
+          left: `${i % 2 === 0 ? -20 : 60 + Math.random() * 20}%`,
+          width: 180 + i * 30,
+          opacity: 0.18 + Math.random() * 0.12,
+          animationDuration: `${30 + i * 10}s`,
+        }}
+        viewBox="0 0 200 60"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <ellipse cx="50" cy="30" rx="50" ry="20" fill="#fff8e1" />
+        <ellipse cx="120" cy="30" rx="40" ry="18" fill="#ffe0b2" />
+        <ellipse cx="170" cy="35" rx="30" ry="12" fill="#fbbf24" />
+      </svg>
+    ))}
+    <style>{`
+      @keyframes cloud-move {
+        0% { transform: translateX(-220px); }
+        100% { transform: translateX(110vw); }
+      }
+      .animate-cloud {
+        animation: cloud-move linear infinite;
+      }
+    `}</style>
+  </div>
+);
+
+const Experience = () => {
+  const experiences = [
+    {
+      title: "Senior DevOps Engineer",
+      company: "TechCorp Solutions",
+      location: "Remote",
+      period: "2023 - Present",
+      responsibilities: [
+        "Led infrastructure automation reducing deployment time by 70%",
+        "Implemented Kubernetes clusters serving 100K+ daily users",
+        "Designed CI/CD pipelines for 50+ microservices",
+        "Mentored junior developers on DevOps best practices"
+      ],
+      technologies: ["Kubernetes", "Docker", "AWS", "Terraform", "Jenkins"]
+    },
+    {
+      title: "Backend Developer",
+      company: "InnovateTech",
+      location: "Chandigarh, India",
+      period: "2021 - 2023",
+      responsibilities: [
+        "Developed scalable REST APIs handling 1M+ requests daily",
+        "Optimized database queries improving response time by 60%",
+        "Implemented microservices architecture for e-commerce platform",
+        "Collaborated with cross-functional teams on feature development"
+      ],
+      technologies: ["Node.js", "Express", "MongoDB", "Redis", "Docker"]
+    },
+    {
+      title: "Junior DevOps Engineer",
+      company: "StartupHub",
+      location: "Delhi, India",
+      period: "2020 - 2021",
+      responsibilities: [
+        "Automated deployment processes using GitHub Actions",
+        "Managed AWS infrastructure and cost optimization",
+        "Implemented monitoring and alerting systems",
+        "Maintained development and staging environments"
+      ],
+      technologies: ["AWS", "GitHub Actions", "Prometheus", "Grafana"]
+    }
+  ];
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { x: -50, opacity: 0 },
+    visible: {
+      x: 0,
+      opacity: 1,
+      transition: { duration: 0.6 }
+    }
+  };
+
+  return (
+    <section id="experience" className="relative py-20 overflow-hidden">
+      <CloudBackground />
+      <div className="absolute inset-0 bg-gradient-to-br from-red-900/20 via-orange-900/20 to-yellow-900/20"></div>
+      
+      <div className="container mx-auto px-6 relative z-10">
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="text-center mb-16"
+        >
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
+            Professional Experience
+          </h2>
+          <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto"></div>
+          <p className="text-gray-300 mt-4 text-lg">
+            Building robust systems and scaling infrastructure across diverse environments
+          </p>
+        </motion.div>
+
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          className="max-w-4xl mx-auto"
+        >
+          <div className="relative">
+            {/* Timeline Line */}
+            <div className="absolute left-4 md:left-1/2 transform md:-translate-x-1/2 w-0.5 h-full bg-gradient-to-b from-blue-500 to-purple-500"></div>
+            
+            {experiences.map((exp, index) => (
+              <motion.div
+                key={index}
+                variants={itemVariants}
+                className={`relative flex items-center mb-12 ${
+                  index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
+                }`}
+              >
+                {/* Timeline Node */}
+                <div className="absolute left-4 md:left-1/2 transform md:-translate-x-1/2 w-4 h-4 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full z-10"></div>
+                
+                {/* Content */}
+                <div className={`ml-12 md:ml-0 md:w-1/2 ${
+                  index % 2 === 0 ? 'md:pr-12' : 'md:pl-12'
+                }`}>
+                  <motion.div
+                    className="glassmorphism p-6 rounded-2xl hover:scale-105 transition-all duration-300"
+                    whileHover={{ scale: 1.02 }}
+                  >
+                    <div className="flex items-center gap-3 mb-4">
+                      <div className="p-2 bg-blue-500/20 rounded-full">
+                        <Briefcase className="w-5 h-5 text-blue-400" />
+                      </div>
+                      <div>
+                        <h3 className="text-xl font-bold text-white">{exp.title}</h3>
+                        <p className="text-blue-300 font-medium">{exp.company}</p>
+                      </div>
+                    </div>
+                    
+                    <div className="flex items-center gap-4 mb-4 text-gray-300 text-sm">
+                      <div className="flex items-center gap-1">
+                        <Calendar className="w-4 h-4" />
+                        {exp.period}
+                      </div>
+                      <div className="flex items-center gap-1">
+                        <MapPin className="w-4 h-4" />
+                        {exp.location}
+                      </div>
+                    </div>
+                    
+                    <ul className="space-y-2 mb-4">
+                      {exp.responsibilities.map((resp, respIndex) => (
+                        <li key={respIndex} className="text-gray-300 text-sm flex items-start gap-2">
+                          <Award className="w-3 h-3 text-green-400 mt-1 flex-shrink-0" />
+                          {resp}
+                        </li>
+                      ))}
+                    </ul>
+                    
+                    <div className="flex flex-wrap gap-2">
+                      {exp.technologies.map((tech, techIndex) => (
+                        <span
+                          key={techIndex}
+                          className="px-3 py-1 bg-white/10 rounded-full text-xs text-gray-300 hover:bg-white/20 transition-colors"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                  </motion.div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  );
+};
+
+export default Experience;
