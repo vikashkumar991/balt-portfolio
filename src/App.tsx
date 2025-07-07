@@ -1,4 +1,5 @@
 import React from 'react';
+import CursorFollower from './components/CursorFollower';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
@@ -13,6 +14,7 @@ import Footer from './components/Footer';
 function App() {
   return (
     <div className="min-h-screen bg-black text-white">
+      <CursorFollower />
       <Navbar />
       <Hero />
       <About />
