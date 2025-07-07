@@ -54,22 +54,8 @@ const Contact = () => {
 
   return (
     <section id="contact" className="relative py-20 overflow-hidden">
-      {/* Fire Background with Orange Rain */}
-      <div className="absolute inset-0 bg-gradient-to-br from-red-900/20 via-orange-900/20 to-yellow-900/20">
-        <div className="fire-container">
-          {[...Array(15)].map((_, i) => (
-            <div
-              key={i}
-              className="fire-particle"
-              style={{
-                left: `${Math.random() * 100}%`,
-                animationDelay: `${Math.random() * 2}s`,
-                animationDuration: `${2 + Math.random() * 2}s`
-              }}
-            />
-          ))}
-        </div>
-      </div>
+      {/* Background with Orange Rain */}
+      <div className="absolute inset-0 bg-gradient-to-br from-red-900/20 via-orange-900/20 to-yellow-900/20"></div>
       
       <OrangeRain />
 

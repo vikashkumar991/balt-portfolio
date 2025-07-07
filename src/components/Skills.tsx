@@ -132,22 +132,8 @@ const Skills = () => {
 
   return (
     <section id="skills" className="relative py-20 overflow-hidden">
-      {/* Fire Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-red-900/20 via-orange-900/20 to-yellow-900/20">
-        <div className="fire-container">
-          {[...Array(20)].map((_, i) => (
-            <div
-              key={i}
-              className="fire-particle"
-              style={{
-                left: `${Math.random() * 100}%`,
-                animationDelay: `${Math.random() * 2}s`,
-                animationDuration: `${2 + Math.random() * 2}s`
-              }}
-            />
-          ))}
-        </div>
-      </div>
+      {/* Background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-red-900/20 via-orange-900/20 to-yellow-900/20"></div>
       
       {/* Fire Stars */}
       <FireStars />
