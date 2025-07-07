@@ -1,4 +1,7 @@
 import React from 'react';
+import { useState } from 'react';
+import { AnimatePresence } from 'framer-motion';
+import IntroLoader from './components/IntroLoader';
 import CursorFollower from './components/CursorFollower';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
@@ -12,20 +15,36 @@ import Contact from './components/Contact';
 import Footer from './components/Footer';
 
 function App() {
+  const [showIntro, setShowIntro] = useState(true);
+
+  const handleIntroComplete = () => {
+    setShowIntro(false);
+  };
+
   return (
-    <div className="min-h-screen bg-black text-white">
-      <CursorFollower />
-      <Navbar />
-      <Hero />
-      <About />
-      <Skills />
-      <Projects />
-      <Experience />
-      <MemeSection />
-      <Blog />
-      <Contact />
-      <Footer />
-    </div>
+    <>
+      <AnimatePresence>
+        {showIntro && (
+          <IntroLoader onComplete={handleIntroComplete} />
+        )}
+      </AnimatePresence>
+      
+      {!showIntro && (
+        <div className="min-h-screen bg-black text-white">
+          <CursorFollower />
+          <Navbar />
+          <Hero />
+          <About />
+          <Skills />
+          <Projects />
+          <Experience />
+          <MemeSection />
+          <Blog />
+          <Contact />
+          <Footer />
+        </div>
+      )}
+    </>
   );
 }
 
