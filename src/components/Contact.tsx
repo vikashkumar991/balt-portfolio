@@ -2,6 +2,36 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Mail, Phone, MapPin, Send, Github, Linkedin } from 'lucide-react';
 
+const OrangeRain: React.FC = () => (
+  <div className="absolute inset-0 w-full h-full pointer-events-none z-0">
+    {[...Array(100)].map((_, i) => (
+      <div
+        key={i}
+        className="raindrop-orange"
+        style={{
+          left: `${Math.random() * 100}%`,
+          animationDelay: `${Math.random() * 2}s`,
+          animationDuration: `${0.5 + Math.random() * 1}s`
+        }}
+      />
+    ))}
+    <style>{`
+      .raindrop-orange {
+        position: absolute;
+        width: 2px;
+        height: 50px;
+        background: linear-gradient(to bottom, 
+          transparent, 
+          rgba(255, 107, 53, 0.6), 
+          rgba(255, 140, 66, 0.8)
+        );
+        animation: rain-fall infinite linear;
+        top: -50px;
+      }
+    `}</style>
+  </div>
+);
+
 const Contact = () => {
   const [formData, setFormData] = useState({
     name: '',
@@ -24,22 +54,24 @@ const Contact = () => {
 
   return (
     <section id="contact" className="relative py-20 overflow-hidden">
-      {/* Raindrop Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-cyan-900/20 to-blue-900/20">
-        <div className="rain-container">
-          {[...Array(100)].map((_, i) => (
+      {/* Fire Background with Orange Rain */}
+      <div className="absolute inset-0 bg-gradient-to-br from-red-900/20 via-orange-900/20 to-yellow-900/20">
+        <div className="fire-container">
+          {[...Array(15)].map((_, i) => (
             <div
               key={i}
-              className="raindrop"
+              className="fire-particle"
               style={{
                 left: `${Math.random() * 100}%`,
                 animationDelay: `${Math.random() * 2}s`,
-                animationDuration: `${0.5 + Math.random() * 1}s`
+                animationDuration: `${2 + Math.random() * 2}s`
               }}
             />
           ))}
         </div>
       </div>
+      
+      <OrangeRain />
 
       <div className="container mx-auto px-6 relative z-10">
         <motion.div
@@ -51,7 +83,7 @@ const Contact = () => {
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
             Get In Touch
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-cyan-500 to-blue-500 mx-auto"></div>
+          <div className="w-24 h-1 bg-gradient-to-r from-orange-500 to-red-500 mx-auto"></div>
           <p className="text-gray-300 mt-4 text-lg">
             Let's discuss your next project and build something amazing together
           </p>
@@ -65,13 +97,13 @@ const Contact = () => {
             transition={{ duration: 0.8 }}
             className="space-y-8"
           >
-            <div className="glassmorphism p-8 rounded-2xl">
+            <div className="glassmorphism p-8 rounded-2xl border border-orange-500/20">
               <h3 className="text-2xl font-bold text-white mb-6">Let's Connect</h3>
               
               <div className="space-y-6">
                 <div className="flex items-center gap-4">
-                  <div className="p-3 bg-cyan-500/20 rounded-full">
-                    <Mail className="w-6 h-6 text-cyan-400" />
+                  <div className="p-3 bg-orange-500/20 rounded-full">
+                    <Mail className="w-6 h-6 text-orange-400" />
                   </div>
                   <div>
                     <p className="text-gray-300">Email</p>
@@ -80,8 +112,8 @@ const Contact = () => {
                 </div>
                 
                 <div className="flex items-center gap-4">
-                  <div className="p-3 bg-green-500/20 rounded-full">
-                    <Phone className="w-6 h-6 text-green-400" />
+                  <div className="p-3 bg-red-500/20 rounded-full">
+                    <Phone className="w-6 h-6 text-red-400" />
                   </div>
                   <div>
                     <p className="text-gray-300">Phone</p>
@@ -90,8 +122,8 @@ const Contact = () => {
                 </div>
                 
                 <div className="flex items-center gap-4">
-                  <div className="p-3 bg-purple-500/20 rounded-full">
-                    <MapPin className="w-6 h-6 text-purple-400" />
+                  <div className="p-3 bg-yellow-500/20 rounded-full">
+                    <MapPin className="w-6 h-6 text-yellow-400" />
                   </div>
                   <div>
                     <p className="text-gray-300">Location</p>
@@ -100,19 +132,19 @@ const Contact = () => {
                 </div>
               </div>
               
-              <div className="mt-8 pt-8 border-t border-gray-600">
+              <div className="mt-8 pt-8 border-t border-orange-500/20">
                 <h4 className="text-white font-semibold mb-4">Follow Me</h4>
                 <div className="flex gap-4">
                   <motion.a
                     href="#"
-                    className="p-3 bg-white/10 rounded-full hover:bg-white/20 transition-all duration-300"
+                    className="p-3 bg-orange-500/20 rounded-full hover:bg-orange-500/30 transition-all duration-300 border border-orange-500/30"
                     whileHover={{ scale: 1.1 }}
                   >
                     <Github className="w-5 h-5 text-white" />
                   </motion.a>
                   <motion.a
                     href="#"
-                    className="p-3 bg-white/10 rounded-full hover:bg-white/20 transition-all duration-300"
+                    className="p-3 bg-orange-500/20 rounded-full hover:bg-orange-500/30 transition-all duration-300 border border-orange-500/30"
                     whileHover={{ scale: 1.1 }}
                   >
                     <Linkedin className="w-5 h-5 text-white" />
@@ -128,7 +160,7 @@ const Contact = () => {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <div className="glassmorphism p-8 rounded-2xl">
+            <div className="glassmorphism p-8 rounded-2xl border border-orange-500/20">
               <h3 className="text-2xl font-bold text-white mb-6">Send Message</h3>
               
               <form onSubmit={handleSubmit} className="space-y-6">
@@ -139,7 +171,7 @@ const Contact = () => {
                     name="name"
                     value={formData.name}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-cyan-500 focus:ring-2 focus:ring-cyan-500/20 transition-all duration-300"
+                    className="w-full px-4 py-3 bg-white/10 border border-orange-500/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 transition-all duration-300"
                     placeholder="Your name"
                     required
                   />
@@ -152,7 +184,7 @@ const Contact = () => {
                     name="email"
                     value={formData.email}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-cyan-500 focus:ring-2 focus:ring-cyan-500/20 transition-all duration-300"
+                    className="w-full px-4 py-3 bg-white/10 border border-orange-500/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 transition-all duration-300"
                     placeholder="your.email@example.com"
                     required
                   />
@@ -165,7 +197,7 @@ const Contact = () => {
                     value={formData.message}
                     onChange={handleChange}
                     rows={6}
-                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-cyan-500 focus:ring-2 focus:ring-cyan-500/20 transition-all duration-300 resize-none"
+                    className="w-full px-4 py-3 bg-white/10 border border-orange-500/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 transition-all duration-300 resize-none"
                     placeholder="Your message here..."
                     required
                   />
@@ -173,7 +205,7 @@ const Contact = () => {
                 
                 <motion.button
                   type="submit"
-                  className="w-full bg-gradient-to-r from-cyan-500 to-blue-500 text-white py-3 px-6 rounded-lg font-semibold hover:from-cyan-600 hover:to-blue-600 transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-cyan-500/25"
+                  className="w-full bg-gradient-to-r from-orange-500 to-red-500 text-white py-3 px-6 rounded-lg font-semibold hover:from-orange-600 hover:to-red-600 transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-orange-500/25"
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                 >

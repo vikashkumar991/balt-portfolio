@@ -11,7 +11,7 @@ const Projects = () => {
       demo: "#",
       github: "#",
       icon: Server,
-      color: "from-blue-500 to-cyan-500"
+      color: "from-orange-500 to-red-500"
     },
     {
       title: "Microservices Backend",
@@ -20,7 +20,7 @@ const Projects = () => {
       demo: "#",
       github: "#",
       icon: Code,
-      color: "from-green-500 to-emerald-500"
+      color: "from-red-500 to-orange-500"
     },
     {
       title: "Cloud Monitoring Dashboard",
@@ -29,7 +29,7 @@ const Projects = () => {
       demo: "#",
       github: "#",
       icon: Zap,
-      color: "from-purple-500 to-pink-500"
+      color: "from-yellow-500 to-orange-500"
     },
     {
       title: "Automated Deployment Platform",
@@ -38,7 +38,7 @@ const Projects = () => {
       demo: "#",
       github: "#",
       icon: Server,
-      color: "from-orange-500 to-red-500"
+      color: "from-orange-600 to-red-600"
     },
     {
       title: "Serverless API Gateway",
@@ -47,7 +47,7 @@ const Projects = () => {
       demo: "#",
       github: "#",
       icon: Zap,
-      color: "from-indigo-500 to-purple-500"
+      color: "from-red-600 to-orange-600"
     },
     {
       title: "Infrastructure as Code",
@@ -56,7 +56,7 @@ const Projects = () => {
       demo: "#",
       github: "#",
       icon: Code,
-      color: "from-teal-500 to-blue-500"
+      color: "from-orange-500 to-yellow-500"
     }
   ];
 
@@ -81,17 +81,17 @@ const Projects = () => {
 
   return (
     <section id="projects" className="relative py-20 overflow-hidden">
-      {/* Thunderstorm Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-purple-900/20 to-indigo-900/20">
-        <div className="lightning-container">
-          {[...Array(8)].map((_, i) => (
+      {/* Fire Background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-red-900/20 via-orange-900/20 to-yellow-900/20">
+        <div className="fire-container">
+          {[...Array(25)].map((_, i) => (
             <div
               key={i}
-              className="lightning-bolt"
+              className="fire-particle"
               style={{
                 left: `${Math.random() * 100}%`,
-                animationDelay: `${Math.random() * 5}s`,
-                animationDuration: `${0.5 + Math.random() * 1}s`
+                animationDelay: `${Math.random() * 2}s`,
+                animationDuration: `${2 + Math.random() * 2}s`
               }}
             />
           ))}
@@ -108,7 +108,7 @@ const Projects = () => {
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
             Featured Projects
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-purple-500 to-pink-500 mx-auto"></div>
+          <div className="w-24 h-1 bg-gradient-to-r from-orange-500 to-red-500 mx-auto"></div>
           <p className="text-gray-300 mt-4 text-lg">
             Building the future of infrastructure, one deployment at a time
           </p>
@@ -124,14 +124,14 @@ const Projects = () => {
             <motion.div
               key={index}
               variants={itemVariants}
-              className="group glassmorphism p-6 rounded-2xl hover:scale-105 transition-all duration-500 hover:shadow-2xl hover:shadow-purple-500/20"
+              className="group glassmorphism p-6 rounded-2xl hover:scale-105 transition-all duration-500 hover:shadow-2xl hover:shadow-orange-500/20 border border-orange-500/20"
             >
               <div className="relative">
                 <div className={`inline-flex p-4 rounded-full bg-gradient-to-r ${project.color} mb-4 group-hover:scale-110 transition-transform duration-300`}>
                   <project.icon className="w-8 h-8 text-white" />
                 </div>
                 
-                <h3 className="text-xl font-bold text-white mb-3 group-hover:text-purple-300 transition-colors">
+                <h3 className="text-xl font-bold text-white mb-3 group-hover:text-orange-300 transition-colors">
                   {project.title}
                 </h3>
                 
@@ -143,7 +143,7 @@ const Projects = () => {
                   {project.tech.map((tech, techIndex) => (
                     <span
                       key={techIndex}
-                      className="px-3 py-1 bg-white/10 rounded-full text-xs text-gray-300 hover:bg-white/20 transition-colors"
+                      className="px-3 py-1 bg-orange-500/20 rounded-full text-xs text-orange-300 hover:bg-orange-500/30 transition-colors border border-orange-500/30"
                     >
                       {tech}
                     </span>
@@ -153,7 +153,7 @@ const Projects = () => {
                 <div className="flex gap-4">
                   <motion.a
                     href={project.demo}
-                    className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-full text-sm hover:from-purple-600 hover:to-pink-600 transition-all duration-300"
+                    className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-orange-500 to-red-500 text-white rounded-full text-sm hover:from-orange-600 hover:to-red-600 transition-all duration-300"
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                   >
@@ -162,7 +162,7 @@ const Projects = () => {
                   </motion.a>
                   <motion.a
                     href={project.github}
-                    className="flex items-center gap-2 px-4 py-2 bg-white/10 text-white rounded-full text-sm hover:bg-white/20 transition-all duration-300"
+                    className="flex items-center gap-2 px-4 py-2 bg-white/10 text-white rounded-full text-sm hover:bg-orange-500/20 transition-all duration-300 border border-orange-500/30"
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                   >

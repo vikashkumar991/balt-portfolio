@@ -6,7 +6,7 @@ import {
   GitBranch, Shield, Zap, Settings
 } from 'lucide-react';
 
-const Starfall: React.FC = () => {
+const FireStars: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
@@ -37,8 +37,8 @@ const Starfall: React.FC = () => {
         ctx.globalAlpha = star.alpha;
         ctx.beginPath();
         ctx.arc(star.x, star.y, star.r, 0, 2 * Math.PI);
-        ctx.fillStyle = 'white';
-        ctx.shadowColor = '#fbbf24'; // yellow-400
+        ctx.fillStyle = '#ff6b35';
+        ctx.shadowColor = '#ff8c42';
         ctx.shadowBlur = 8;
         ctx.fill();
         ctx.restore();
@@ -68,7 +68,7 @@ const Skills = () => {
     {
       title: "Backend Development",
       icon: Server,
-      color: "from-green-500 to-emerald-500",
+      color: "from-orange-500 to-red-500",
       skills: [
         { name: "Node.js", level: 90, icon: Code },
         { name: "Python", level: 85, icon: Code },
@@ -79,7 +79,7 @@ const Skills = () => {
     {
       title: "DevOps & Infrastructure",
       icon: Container,
-      color: "from-blue-500 to-cyan-500",
+      color: "from-red-500 to-orange-500",
       skills: [
         { name: "Docker", level: 92, icon: Container },
         { name: "Kubernetes", level: 85, icon: Network },
@@ -90,7 +90,7 @@ const Skills = () => {
     {
       title: "Cloud & Databases",
       icon: Cloud,
-      color: "from-purple-500 to-pink-500",
+      color: "from-yellow-500 to-orange-500",
       skills: [
         { name: "AWS", level: 87, icon: Cloud },
         { name: "MongoDB", level: 85, icon: Database },
@@ -101,7 +101,7 @@ const Skills = () => {
     {
       title: "Tools & Security",
       icon: Shield,
-      color: "from-orange-500 to-red-500",
+      color: "from-orange-600 to-red-600",
       skills: [
         { name: "Git", level: 95, icon: GitBranch },
         { name: "Linux", level: 90, icon: Terminal },
@@ -132,9 +132,25 @@ const Skills = () => {
 
   return (
     <section id="skills" className="relative py-20 overflow-hidden">
-      {/* Starfall Background */}
-      <Starfall />
-      <div className="absolute inset-0 bg-gradient-to-br from-red-900/20 via-orange-900/20 to-yellow-900/20"></div>
+      {/* Fire Background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-red-900/20 via-orange-900/20 to-yellow-900/20">
+        <div className="fire-container">
+          {[...Array(20)].map((_, i) => (
+            <div
+              key={i}
+              className="fire-particle"
+              style={{
+                left: `${Math.random() * 100}%`,
+                animationDelay: `${Math.random() * 2}s`,
+                animationDuration: `${2 + Math.random() * 2}s`
+              }}
+            />
+          ))}
+        </div>
+      </div>
+      
+      {/* Fire Stars */}
+      <FireStars />
       
       <div className="container mx-auto px-6 relative z-10">
         <motion.div
@@ -146,7 +162,7 @@ const Skills = () => {
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
             Technical Skills
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-green-500 to-blue-500 mx-auto"></div>
+          <div className="w-24 h-1 bg-gradient-to-r from-orange-500 to-red-500 mx-auto"></div>
         </motion.div>
 
         <motion.div
@@ -159,7 +175,7 @@ const Skills = () => {
             <motion.div
               key={index}
               variants={itemVariants}
-              className="glassmorphism p-6 rounded-2xl hover:scale-105 transition-all duration-300"
+              className="glassmorphism p-6 rounded-2xl hover:scale-105 transition-all duration-300 border border-orange-500/20"
             >
               <div className="text-center mb-6">
                 <div className={`inline-flex p-4 rounded-full bg-gradient-to-r ${category.color} mb-4`}>
@@ -173,12 +189,12 @@ const Skills = () => {
                   <div key={skillIndex} className="group">
                     <div className="flex items-center justify-between mb-2">
                       <div className="flex items-center gap-2">
-                        <skill.icon className="w-4 h-4 text-gray-400 group-hover:text-white transition-colors" />
+                        <skill.icon className="w-4 h-4 text-orange-400 group-hover:text-white transition-colors" />
                         <span className="text-gray-300 group-hover:text-white transition-colors text-sm">
                           {skill.name}
                         </span>
                       </div>
-                      <span className="text-xs text-gray-400">{skill.level}%</span>
+                      <span className="text-xs text-orange-400">{skill.level}%</span>
                     </div>
                     <div className="w-full bg-gray-700 rounded-full h-2 overflow-hidden">
                       <motion.div
@@ -200,7 +216,7 @@ const Skills = () => {
           {[...Array(12)].map((_, i) => (
             <motion.div
               key={i}
-              className="absolute text-white/5"
+              className="absolute text-orange-500/10"
               style={{
                 left: `${Math.random() * 100}%`,
                 top: `${Math.random() * 100}%`,

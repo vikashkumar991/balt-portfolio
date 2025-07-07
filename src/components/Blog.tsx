@@ -2,6 +2,37 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { BookOpen, Calendar, ArrowRight, User } from 'lucide-react';
 
+const SmokeEffect: React.FC = () => (
+  <div className="absolute inset-0 w-full h-full pointer-events-none z-0">
+    {[...Array(8)].map((_, i) => (
+      <div
+        key={i}
+        className="absolute animate-smoke"
+        style={{
+          left: `${Math.random() * 100}%`,
+          top: `${Math.random() * 100}%`,
+          width: 100 + Math.random() * 100,
+          height: 100 + Math.random() * 100,
+          animationDelay: `${Math.random() * 5}s`,
+          animationDuration: `${10 + Math.random() * 10}s`,
+        }}
+      >
+        <div className="w-full h-full bg-gradient-radial from-orange-500/10 via-red-500/5 to-transparent rounded-full blur-xl"></div>
+      </div>
+    ))}
+    <style>{`
+      @keyframes smoke {
+        0% { transform: translateY(0) scale(0.8) rotate(0deg); opacity: 0.3; }
+        50% { transform: translateY(-50px) scale(1.2) rotate(180deg); opacity: 0.1; }
+        100% { transform: translateY(-100px) scale(1.5) rotate(360deg); opacity: 0; }
+      }
+      .animate-smoke {
+        animation: smoke linear infinite;
+      }
+    `}</style>
+  </div>
+);
+
 const Blog = () => {
   const blogPosts = [
     {
@@ -10,7 +41,7 @@ const Blog = () => {
       date: "2024-01-15",
       readTime: "8 min read",
       category: "DevOps",
-      color: "from-blue-500 to-cyan-500"
+      color: "from-orange-500 to-red-500"
     },
     {
       title: "Linux Commands You Should Know",
@@ -18,7 +49,7 @@ const Blog = () => {
       date: "2024-01-10",
       readTime: "6 min read",
       category: "Linux",
-      color: "from-green-500 to-emerald-500"
+      color: "from-red-500 to-orange-500"
     },
     {
       title: "Scaling Node.js Applications",
@@ -26,7 +57,7 @@ const Blog = () => {
       date: "2024-01-05",
       readTime: "12 min read",
       category: "Backend",
-      color: "from-purple-500 to-pink-500"
+      color: "from-yellow-500 to-orange-500"
     },
     {
       title: "Kubernetes Security Best Practices",
@@ -34,7 +65,7 @@ const Blog = () => {
       date: "2023-12-28",
       readTime: "10 min read",
       category: "Security",
-      color: "from-red-500 to-orange-500"
+      color: "from-orange-600 to-red-600"
     },
     {
       title: "Infrastructure as Code with Terraform",
@@ -42,7 +73,7 @@ const Blog = () => {
       date: "2023-12-20",
       readTime: "15 min read",
       category: "Infrastructure",
-      color: "from-indigo-500 to-purple-500"
+      color: "from-red-600 to-orange-600"
     },
     {
       title: "Building Resilient Microservices",
@@ -50,7 +81,7 @@ const Blog = () => {
       date: "2023-12-15",
       readTime: "11 min read",
       category: "Architecture",
-      color: "from-teal-500 to-blue-500"
+      color: "from-orange-500 to-yellow-500"
     }
   ];
 
@@ -75,8 +106,24 @@ const Blog = () => {
 
   return (
     <section id="blog" className="relative py-20 overflow-hidden">
-      {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-indigo-900/20 to-purple-900/20"></div>
+      {/* Fire Background with Smoke Effect */}
+      <div className="absolute inset-0 bg-gradient-to-br from-red-900/20 via-orange-900/20 to-yellow-900/20">
+        <div className="fire-container">
+          {[...Array(15)].map((_, i) => (
+            <div
+              key={i}
+              className="fire-particle"
+              style={{
+                left: `${Math.random() * 100}%`,
+                animationDelay: `${Math.random() * 2}s`,
+                animationDuration: `${2 + Math.random() * 2}s`
+              }}
+            />
+          ))}
+        </div>
+      </div>
+      
+      <SmokeEffect />
       
       <div className="container mx-auto px-6 relative z-10">
         <motion.div
@@ -86,12 +133,12 @@ const Blog = () => {
           className="text-center mb-16"
         >
           <div className="flex items-center justify-center gap-3 mb-4">
-            <BookOpen className="w-8 h-8 text-indigo-400" />
+            <BookOpen className="w-8 h-8 text-orange-400" />
             <h2 className="text-4xl md:text-5xl font-bold text-white">
               Blog & Articles
             </h2>
           </div>
-          <div className="w-24 h-1 bg-gradient-to-r from-indigo-500 to-purple-500 mx-auto"></div>
+          <div className="w-24 h-1 bg-gradient-to-r from-orange-500 to-red-500 mx-auto"></div>
           <p className="text-gray-300 mt-4 text-lg">
             Sharing knowledge and experiences from the tech world
           </p>
@@ -107,7 +154,7 @@ const Blog = () => {
             <motion.article
               key={index}
               variants={itemVariants}
-              className="group glassmorphism p-6 rounded-2xl hover:scale-105 transition-all duration-500 hover:shadow-2xl hover:shadow-indigo-500/20"
+              className="group glassmorphism p-6 rounded-2xl hover:scale-105 transition-all duration-500 hover:shadow-2xl hover:shadow-orange-500/20 border border-orange-500/20"
             >
               <div className="space-y-4">
                 <div className="flex items-center justify-between">
@@ -120,7 +167,7 @@ const Blog = () => {
                   </div>
                 </div>
                 
-                <h3 className="text-xl font-bold text-white group-hover:text-indigo-300 transition-colors">
+                <h3 className="text-xl font-bold text-white group-hover:text-orange-300 transition-colors">
                   {post.title}
                 </h3>
                 
@@ -128,14 +175,14 @@ const Blog = () => {
                   {post.excerpt}
                 </p>
                 
-                <div className="flex items-center justify-between pt-4 border-t border-gray-600">
+                <div className="flex items-center justify-between pt-4 border-t border-orange-500/20">
                   <div className="flex items-center gap-2 text-gray-400 text-sm">
                     <User className="w-4 h-4" />
                     {post.readTime}
                   </div>
                   
                   <motion.button
-                    className="flex items-center gap-2 text-indigo-400 hover:text-indigo-300 transition-colors group"
+                    className="flex items-center gap-2 text-orange-400 hover:text-orange-300 transition-colors group"
                     whileHover={{ x: 5 }}
                   >
                     <span className="text-sm font-medium">Read More</span>
@@ -154,7 +201,7 @@ const Blog = () => {
           transition={{ duration: 0.8, delay: 0.3 }}
           className="text-center mt-16"
         >
-          <div className="glassmorphism p-8 rounded-2xl max-w-2xl mx-auto">
+          <div className="glassmorphism p-8 rounded-2xl max-w-2xl mx-auto border border-orange-500/20">
             <h3 className="text-2xl font-bold text-white mb-4">
               Want to stay updated?
             </h3>
@@ -162,7 +209,7 @@ const Blog = () => {
               Subscribe to my newsletter for the latest articles on DevOps, Backend Development, and Cloud Technologies.
             </p>
             <motion.button
-              className="bg-gradient-to-r from-indigo-500 to-purple-500 text-white px-8 py-3 rounded-full font-semibold hover:from-indigo-600 hover:to-purple-600 transition-all duration-300 transform hover:scale-105"
+              className="bg-gradient-to-r from-orange-500 to-red-500 text-white px-8 py-3 rounded-full font-semibold hover:from-orange-600 hover:to-red-600 transition-all duration-300 transform hover:scale-105"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >

@@ -2,6 +2,26 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Menu, X, Code, User, Briefcase, Mail, FolderOpen } from 'lucide-react';
 
+const FlameHeader: React.FC = () => (
+  <div className="absolute inset-0 w-full h-full pointer-events-none z-0">
+    <div className="fire-container">
+      {[...Array(8)].map((_, i) => (
+        <div
+          key={i}
+          className="fire-particle"
+          style={{
+            left: `${10 + i * 12}%`,
+            animationDelay: `${Math.random() * 2}s`,
+            animationDuration: `${1.5 + Math.random() * 1}s`,
+            height: '15px',
+            width: '3px'
+          }}
+        />
+      ))}
+    </div>
+  </div>
+);
+
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('hero');
@@ -49,9 +69,11 @@ const Navbar = () => {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
-      className="fixed top-0 w-full z-50 glassmorphism border-b border-white/10"
+      className="fixed top-0 w-full z-50 glassmorphism border-b border-orange-500/20 relative overflow-hidden"
     >
-      <div className="container mx-auto px-6">
+      <FlameHeader />
+      
+      <div className="container mx-auto px-6 relative z-10">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <motion.div
@@ -72,7 +94,7 @@ const Navbar = () => {
                 className={`flex items-center gap-2 px-4 py-2 rounded-full transition-all duration-300 ${
                   activeSection === item.id
                     ? 'bg-gradient-to-r from-orange-500 to-red-500 text-white'
-                    : 'text-gray-300 hover:text-white hover:bg-white/10'
+                    : 'text-gray-300 hover:text-white hover:bg-orange-500/20'
                 }`}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
@@ -87,7 +109,7 @@ const Navbar = () => {
           <div className="md:hidden">
             <motion.button
               onClick={() => setIsOpen(!isOpen)}
-              className="text-white p-2 rounded-lg hover:bg-white/10 transition-colors"
+              className="text-white p-2 rounded-lg hover:bg-orange-500/20 transition-colors"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
             >
@@ -102,7 +124,7 @@ const Navbar = () => {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden py-4 border-t border-white/10"
+            className="md:hidden py-4 border-t border-orange-500/20"
           >
             {menuItems.map((item) => (
               <motion.button
@@ -111,7 +133,7 @@ const Navbar = () => {
                 className={`flex items-center gap-3 w-full px-4 py-3 rounded-lg transition-all duration-300 ${
                   activeSection === item.id
                     ? 'bg-gradient-to-r from-orange-500 to-red-500 text-white'
-                    : 'text-gray-300 hover:text-white hover:bg-white/10'
+                    : 'text-gray-300 hover:text-white hover:bg-orange-500/20'
                 }`}
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
