@@ -73,21 +73,21 @@ const EnhancedSmokeEffect: React.FC = () => (
 
 const EnhancedFloatingBubbles: React.FC = () => (
   <div className="absolute inset-0 w-full h-full pointer-events-none z-0">
-    {[...Array(25)].map((_, i) => (
+    {[...Array(35)].map((_, i) => (
       <div
         key={i}
         className="floating-bubble enhanced-bubble"
         style={{
-          left: `${Math.random() * 100}%`,
-          animationDelay: `${Math.random() * 5}s`,
-          animationDuration: `${6 + Math.random() * 6}s`,
+          left: `${(i * 2.8) % 100}%`,
+          animationDelay: `${(i * 0.3) % 8}s`,
+          animationDuration: `${8 + (i % 4) * 2}s`,
         }}
       >
         <div 
           className="bubble-inner enhanced-bubble-inner"
           style={{
-            width: 15 + Math.random() * 50,
-            height: 15 + Math.random() * 50,
+            width: 20 + (i % 5) * 15,
+            height: 20 + (i % 5) * 15,
           }}
         />
       </div>
@@ -95,68 +95,90 @@ const EnhancedFloatingBubbles: React.FC = () => (
     <style>{`
       .floating-bubble {
         position: absolute;
-        bottom: -50px;
+        bottom: -100px;
         animation: bubble-float linear infinite;
       }
+      
       .bubble-inner {
         background: radial-gradient(circle at 30% 30%, 
-          rgba(255, 107, 53, 0.3), 
-          rgba(255, 140, 66, 0.25), 
-          rgba(255, 165, 102, 0.15),
-          rgba(255, 215, 0, 0.1),
+          rgba(255, 107, 53, 0.6), 
+          rgba(255, 140, 66, 0.4), 
+          rgba(255, 165, 102, 0.3),
+          rgba(255, 215, 0, 0.2),
           transparent
         );
         border-radius: 50%;
-        filter: blur(1px);
-        opacity: 0.7;
+        filter: blur(0.5px);
+        opacity: 0.8;
       }
       
       .enhanced-bubble-inner {
         box-shadow: 
-          0 0 15px rgba(255, 140, 66, 0.4),
-          0 0 30px rgba(255, 107, 53, 0.2),
-          inset 0 0 10px rgba(255, 215, 0, 0.1);
-        animation: bubble-glow 3s ease-in-out infinite alternate;
+          0 0 20px rgba(255, 140, 66, 0.6),
+          0 0 40px rgba(255, 107, 53, 0.4),
+          0 0 60px rgba(255, 69, 0, 0.2),
+          inset 0 0 15px rgba(255, 215, 0, 0.2);
+        animation: bubble-glow 2s ease-in-out infinite alternate;
       }
       
       @keyframes bubble-glow {
         0% { 
           box-shadow: 
-            0 0 15px rgba(255, 140, 66, 0.4),
-            0 0 30px rgba(255, 107, 53, 0.2);
+            0 0 20px rgba(255, 140, 66, 0.6),
+            0 0 40px rgba(255, 107, 53, 0.4),
+            0 0 60px rgba(255, 69, 0, 0.2);
         }
         100% { 
           box-shadow: 
-            0 0 25px rgba(255, 140, 66, 0.6),
-            0 0 50px rgba(255, 107, 53, 0.4);
+            0 0 30px rgba(255, 140, 66, 0.8),
+            0 0 60px rgba(255, 107, 53, 0.6),
+            0 0 90px rgba(255, 69, 0, 0.4);
         }
       }
       
       @keyframes bubble-float {
         0% { 
-          transform: translateY(0) translateX(0) scale(0.6); 
+          transform: translateY(0) translateX(0) scale(0.5); 
           opacity: 0; 
         }
-        15% { 
-          opacity: 0.7; 
-          transform: translateY(-20px) translateX(10px) scale(0.8);
+        10% { 
+          opacity: 0.8; 
+          transform: translateY(-50px) translateX(5px) scale(0.7);
         }
-        90% { 
-          opacity: 0.6; 
+        20% { 
+          opacity: 1; 
+          transform: translateY(-100px) translateX(10px) scale(0.9);
+        }
+        80% { 
+          opacity: 0.9; 
+          transform: translateY(-80vh) translateX(30px) scale(1.1);
+        }
+        95% { 
+          opacity: 0.3; 
+          transform: translateY(-95vh) translateX(40px) scale(1.3);
         }
         100% { 
-          transform: translateY(-100vh) translateX(50px) scale(1.2); 
+          transform: translateY(-110vh) translateX(50px) scale(1.5); 
           opacity: 0; 
         }
       }
       
       .enhanced-bubble {
-        animation: bubble-float linear infinite, bubble-sway 4s ease-in-out infinite;
+        animation: bubble-float linear infinite, bubble-sway 6s ease-in-out infinite;
       }
       
       @keyframes bubble-sway {
-        0%, 100% { transform: translateX(0); }
-        50% { transform: translateX(20px); }
+        0%, 100% { 
+          transform: translateX(0) rotate(0deg); 
+        }
+        25% { 
+          transform: translateX(15px) rotate(5deg); 
+        }
+        50% { 
+          transform: translateX(30px) rotate(0deg); 
+        }
+        75% { 
+          transform: translateX(15px) rotate(-5deg); 
         }
       }
     `}</style>
