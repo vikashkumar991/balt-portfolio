@@ -3,12 +3,48 @@ import { motion } from 'framer-motion';
 import { ChevronDown, Download, Github, Linkedin, Mail } from 'lucide-react';
 import profileImg from '../assets/profile.png';
 
-const FloatingBlobImage: React.FC = () => (
-  <div className="mx-auto mb-8 flex justify-center">
-    <div className="relative w-56 h-56 md:w-72 md:h-72">
+const FloatingBlobImage: React.FC = () => {
+  return (
+    <div className="mx-auto mb-8 flex justify-center relative">
+      {/* Floating Particles around Profile */}
+      <div className="absolute inset-0 w-full h-full pointer-events-none">
+        {[...Array(15)].map((_, i) => (
+          <div
+            key={i}
+            className="floating-particle"
+            style={{
+              left: `${20 + Math.random() * 60}%`,
+              top: `${20 + Math.random() * 60}%`,
+              animationDelay: `${Math.random() * 3}s`,
+              animationDuration: `${3 + Math.random() * 2}s`,
+            }}
+          >
+            <div 
+              className="particle-glow"
+              style={{
+                width: 8 + Math.random() * 12,
+                height: 8 + Math.random() * 12,
+              }}
+            />
+          </div>
+        ))}
+      </div>
+      
+      {/* Orbital Rings */}
+      <div className="absolute inset-0 flex items-center justify-center">
+        <div className="orbital-ring ring-1"></div>
+        <div className="orbital-ring ring-2"></div>
+        <div className="orbital-ring ring-3"></div>
+      </div>
+      
+      <div className="relative w-56 h-56 md:w-72 md:h-72 z-10">
+        {/* Enhanced Glow Effect */}
+        <div className="absolute inset-0 rounded-full bg-gradient-to-r from-orange-500/30 to-red-500/30 blur-2xl animate-pulse"></div>
+        <div className="absolute inset-2 rounded-full bg-gradient-to-r from-yellow-400/20 to-orange-400/20 blur-xl animate-pulse" style={{ animationDelay: '0.5s' }}></div>
+        
       <svg
         viewBox="0 0 300 300"
-        className="absolute w-full h-full animate-blob"
+        className="absolute w-full h-full animate-blob z-20"
         xmlns="http://www.w3.org/2000/svg"
       >
         <defs>
@@ -32,18 +68,131 @@ const FloatingBlobImage: React.FC = () => (
       <img
         src={profileImg}
         alt="Profile"
-        className="absolute w-40 h-40 md:w-56 md:h-56 rounded-full object-cover shadow-lg left-1/2 top-1/2"
+        className="absolute w-40 h-40 md:w-56 md:h-56 rounded-full object-cover shadow-2xl left-1/2 top-1/2 z-30 hover:scale-105 transition-transform duration-500"
         style={{ transform: 'translate(-50%, -50%)' }}
       />
+      
+      {/* Floating Icons */}
+      <div className="absolute inset-0 pointer-events-none">
+        {[
+          { icon: '💻', delay: '0s', x: '10%', y: '20%' },
+          { icon: '🚀', delay: '1s', x: '80%', y: '30%' },
+          { icon: '⚡', delay: '2s', x: '15%', y: '70%' },
+          { icon: '🔥', delay: '0.5s', x: '85%', y: '75%' },
+          { icon: '🛠️', delay: '1.5s', x: '50%', y: '10%' },
+          { icon: '🌟', delay: '2.5s', x: '50%', y: '90%' },
+        ].map((item, i) => (
+          <div
+            key={i}
+            className="floating-icon"
+            style={{
+              left: item.x,
+              top: item.y,
+              animationDelay: item.delay,
+            }}
+          >
+            {item.icon}
+          </div>
+        ))}
+      </div>
     </div>
     <style>{`
-      .animate-blob {
-        animation: blob-float 8s ease-in-out infinite alternate;
+      .floating-particle {
+        position: absolute;
+        animation: particle-float infinite ease-in-out;
       }
+      
+      .particle-glow {
+        background: radial-gradient(circle, 
+          rgba(255, 215, 0, 0.8) 0%, 
+          rgba(255, 140, 66, 0.6) 50%, 
+          rgba(255, 69, 0, 0.4) 100%
+        );
+        border-radius: 50%;
+        box-shadow: 0 0 20px rgba(255, 140, 66, 0.8);
+        filter: blur(1px);
+      }
+      
+      .orbital-ring {
+        position: absolute;
+        border: 2px solid transparent;
+        border-radius: 50%;
+        animation: orbit-rotate 20s linear infinite;
+      }
+      
+      .ring-1 {
+        width: 280px;
+        height: 280px;
+        border-top-color: rgba(255, 140, 66, 0.3);
+        border-right-color: rgba(255, 140, 66, 0.1);
+      }
+      
+      .ring-2 {
+        width: 320px;
+        height: 320px;
+        border-bottom-color: rgba(255, 69, 0, 0.3);
+        border-left-color: rgba(255, 69, 0, 0.1);
+        animation-direction: reverse;
+        animation-duration: 25s;
+      }
+      
+      .ring-3 {
+        width: 360px;
+        height: 360px;
+        border-top-color: rgba(255, 215, 0, 0.2);
+        border-bottom-color: rgba(255, 215, 0, 0.1);
+        animation-duration: 30s;
+      }
+      
+      .animate-blob {
+        animation: blob-float 6s ease-in-out infinite alternate;
+      }
+      
       @keyframes blob-float {
         0% { transform: scale(1) translateY(0px); }
         50% { transform: scale(1.05) translateY(-16px); }
         100% { transform: scale(1) translateY(0px); }
+      }
+    `}</style>
+  </div>
+  );
+};
+
+const EnhancedFireBackground: React.FC = () => (
+  <div className="absolute inset-0 overflow-hidden">
+    {/* Enhanced Fire Particles */}
+    <div className="fire-container">
+      {[...Array(30)].map((_, i) => (
+        <div
+          key={i}
+          className="fire-particle enhanced-fire"
+          style={{
+            left: `${Math.random() * 100}%`,
+            animationDelay: `${Math.random() * 3}s`,
+            animationDuration: `${2 + Math.random() * 3}s`,
+            height: `${15 + Math.random() * 25}px`,
+            width: `${3 + Math.random() * 2}px`,
+          }}
+        />
+      ))}
+    </div>
+    
+    <style>{`
+      .enhanced-fire {
+        box-shadow: 
+          0 0 10px rgba(255, 140, 66, 0.8),
+          0 0 20px rgba(255, 69, 0, 0.6),
+          0 0 30px rgba(255, 215, 0, 0.4);
+        filter: blur(0.5px);
+      }
+      
+      .enhanced-fire::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: inherit;
+        filter: blur(2px);
+        opacity: 0.7;
       }
     `}</style>
   </div>
@@ -54,21 +203,11 @@ const Hero = () => {
     <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Fire Background Effect */}
       <div className="absolute inset-0 bg-gradient-to-br from-red-900/20 via-orange-900/20 to-yellow-900/20">
-        <div className="fire-container">
-          {[...Array(20)].map((_, i) => (
-            <div
-              key={i}
-              className="fire-particle"
-              style={{
-                left: `${Math.random() * 100}%`,
-                animationDelay: `${Math.random() * 2}s`,
-                animationDuration: `${2 + Math.random() * 2}s`
-              }}
-            />
-          ))}
-        </div>
+        <EnhancedFireBackground />
       </div>
+      
       <FloatingBlobImage />
+      
       {/* Glass Container */}
       <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
         <motion.div

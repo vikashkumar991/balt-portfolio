@@ -2,54 +2,92 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { BookOpen, Calendar, ArrowRight, User } from 'lucide-react';
 
-const SmokeEffect: React.FC = () => (
+const EnhancedSmokeEffect: React.FC = () => (
   <div className="absolute inset-0 w-full h-full pointer-events-none z-0">
-    {[...Array(8)].map((_, i) => (
+    {[...Array(15)].map((_, i) => (
       <div
         key={i}
-        className="absolute animate-smoke"
+        className="animate-smoke enhanced-smoke"
         style={{
           left: `${Math.random() * 100}%`,
           top: `${Math.random() * 100}%`,
-          width: 100 + Math.random() * 100,
-          height: 100 + Math.random() * 100,
+          width: 80 + Math.random() * 120,
+          height: 80 + Math.random() * 120,
           animationDelay: `${Math.random() * 5}s`,
-          animationDuration: `${10 + Math.random() * 10}s`,
+          animationDuration: `${8 + Math.random() * 12}s`,
         }}
       >
-        <div className="w-full h-full bg-gradient-radial from-orange-500/10 via-red-500/5 to-transparent rounded-full blur-xl"></div>
+        <div className="smoke-core"></div>
       </div>
     ))}
     <style>{`
       @keyframes smoke {
-        0% { transform: translateY(0) scale(0.8) rotate(0deg); opacity: 0.3; }
-        50% { transform: translateY(-50px) scale(1.2) rotate(180deg); opacity: 0.1; }
-        100% { transform: translateY(-100px) scale(1.5) rotate(360deg); opacity: 0; }
+        0% { 
+          transform: translateY(0) scale(0.6) rotate(0deg); 
+          opacity: 0.4; 
+        }
+        25% { 
+          transform: translateY(-30px) scale(0.9) rotate(90deg); 
+          opacity: 0.3; 
+        }
+        50% { 
+          transform: translateY(-60px) scale(1.3) rotate(180deg); 
+          opacity: 0.2; 
+        }
+        75% { 
+          transform: translateY(-90px) scale(1.6) rotate(270deg); 
+          opacity: 0.1; 
+        }
+        100% { 
+          transform: translateY(-120px) scale(2) rotate(360deg); 
+          opacity: 0; 
+        }
       }
+      
       .animate-smoke {
         animation: smoke linear infinite;
+      }
+      
+      .enhanced-smoke {
+        filter: blur(1px);
+      }
+      
+      .smoke-core {
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(circle at 30% 30%, 
+          rgba(255, 140, 66, 0.15) 0%,
+          rgba(255, 107, 53, 0.12) 25%,
+          rgba(255, 69, 0, 0.08) 50%,
+          rgba(255, 165, 102, 0.05) 75%,
+          transparent 100%
+        );
+        border-radius: 50%;
+        box-shadow: 
+          0 0 40px rgba(255, 140, 66, 0.1),
+          inset 0 0 20px rgba(255, 107, 53, 0.05);
       }
     `}</style>
   </div>
 );
 
-const FloatingBubbles: React.FC = () => (
+const EnhancedFloatingBubbles: React.FC = () => (
   <div className="absolute inset-0 w-full h-full pointer-events-none z-0">
-    {[...Array(15)].map((_, i) => (
+    {[...Array(25)].map((_, i) => (
       <div
         key={i}
-        className="floating-bubble"
+        className="floating-bubble enhanced-bubble"
         style={{
           left: `${Math.random() * 100}%`,
           animationDelay: `${Math.random() * 5}s`,
-          animationDuration: `${8 + Math.random() * 4}s`,
+          animationDuration: `${6 + Math.random() * 6}s`,
         }}
       >
         <div 
-          className="bubble-inner"
+          className="bubble-inner enhanced-bubble-inner"
           style={{
-            width: 20 + Math.random() * 40,
-            height: 20 + Math.random() * 40,
+            width: 15 + Math.random() * 50,
+            height: 15 + Math.random() * 50,
           }}
         />
       </div>
@@ -63,20 +101,45 @@ const FloatingBubbles: React.FC = () => (
       .bubble-inner {
         background: radial-gradient(circle at 30% 30%, 
           rgba(255, 107, 53, 0.3), 
-          rgba(255, 140, 66, 0.2), 
-          rgba(255, 165, 102, 0.1)
+          rgba(255, 140, 66, 0.25), 
+          rgba(255, 165, 102, 0.15),
+          rgba(255, 215, 0, 0.1),
+          transparent
         );
         border-radius: 50%;
-        filter: blur(2px);
-        opacity: 0.6;
+        filter: blur(1px);
+        opacity: 0.7;
       }
+      
+      .enhanced-bubble-inner {
+        box-shadow: 
+          0 0 15px rgba(255, 140, 66, 0.4),
+          0 0 30px rgba(255, 107, 53, 0.2),
+          inset 0 0 10px rgba(255, 215, 0, 0.1);
+        animation: bubble-glow 3s ease-in-out infinite alternate;
+      }
+      
+      @keyframes bubble-glow {
+        0% { 
+          box-shadow: 
+            0 0 15px rgba(255, 140, 66, 0.4),
+            0 0 30px rgba(255, 107, 53, 0.2);
+        }
+        100% { 
+          box-shadow: 
+            0 0 25px rgba(255, 140, 66, 0.6),
+            0 0 50px rgba(255, 107, 53, 0.4);
+        }
+      }
+      
       @keyframes bubble-float {
         0% { 
-          transform: translateY(0) translateX(0) scale(0.8); 
+          transform: translateY(0) translateX(0) scale(0.6); 
           opacity: 0; 
         }
-        10% { 
-          opacity: 0.6; 
+        15% { 
+          opacity: 0.7; 
+          transform: translateY(-20px) translateX(10px) scale(0.8);
         }
         90% { 
           opacity: 0.6; 
@@ -84,6 +147,16 @@ const FloatingBubbles: React.FC = () => (
         100% { 
           transform: translateY(-100vh) translateX(50px) scale(1.2); 
           opacity: 0; 
+        }
+      }
+      
+      .enhanced-bubble {
+        animation: bubble-float linear infinite, bubble-sway 4s ease-in-out infinite;
+      }
+      
+      @keyframes bubble-sway {
+        0%, 100% { transform: translateX(0); }
+        50% { transform: translateX(20px); }
         }
       }
     `}</style>
@@ -166,8 +239,8 @@ const Blog = () => {
       {/* Background with Smoke Effect */}
       <div className="absolute inset-0 bg-gradient-to-br from-red-900/20 via-orange-900/20 to-yellow-900/20"></div>
       
-      <SmokeEffect />
-      <FloatingBubbles />
+      <EnhancedSmokeEffect />
+      <EnhancedFloatingBubbles />
       
       <div className="container mx-auto px-6 relative z-10">
         <motion.div
