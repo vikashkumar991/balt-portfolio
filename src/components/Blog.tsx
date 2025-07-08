@@ -72,7 +72,7 @@ const EnhancedSmokeEffect: React.FC = () => (
 );
 
 const EnhancedFloatingBubbles: React.FC = () => (
-  <div className="fixed inset-0 w-full h-full pointer-events-none z-20">
+  <div className="absolute inset-0 w-full h-full pointer-events-none z-20">
     {[...Array(35)].map((_, i) => (
       <div
         key={i}
@@ -81,6 +81,7 @@ const EnhancedFloatingBubbles: React.FC = () => (
           left: `${(i * 2.8) % 100}%`,
           animationDelay: `${(i * 0.3) % 8}s`,
           animationDuration: `${8 + (i % 4) * 2}s`,
+          top: `${Math.random() * 100}%`,
         }}
       >
         <div 
