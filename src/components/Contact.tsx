@@ -103,7 +103,7 @@ const Contact = () => {
                   </div>
                   <div>
                     <p className="text-gray-300">Phone</p>
-                    <p className="text-white font-medium">+91 9915599590</p>
+                    <p className="text-white font-medium">9915599590</p>
                   </div>
                 </div>
                 
@@ -122,14 +122,18 @@ const Contact = () => {
                 <h4 className="text-white font-semibold mb-4">Follow Me</h4>
                 <div className="flex gap-4">
                   <motion.a
-                    href="#"
+                    href="https://github.com/vikashkumar991"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="p-3 bg-orange-500/20 rounded-full hover:bg-orange-500/30 transition-all duration-300 border border-orange-500/30"
                     whileHover={{ scale: 1.1 }}
                   >
                     <Github className="w-5 h-5 text-white" />
                   </motion.a>
                   <motion.a
-                    href="#"
+                    href="https://www.linkedin.com/in/vikash-kumar-singh-784146290"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="p-3 bg-orange-500/20 rounded-full hover:bg-orange-500/30 transition-all duration-300 border border-orange-500/30"
                     whileHover={{ scale: 1.1 }}
                   >

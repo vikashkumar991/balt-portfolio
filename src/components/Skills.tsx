@@ -66,47 +66,47 @@ const FireStars: React.FC = () => {
 const Skills = () => {
   const skillCategories = [
     {
-      title: "Backend Development",
+      title: "Web Development",
       icon: Server,
       color: "from-orange-500 to-red-500",
       skills: [
-        { name: "Node.js", level: 90, icon: Code },
-        { name: "Python", level: 85, icon: Code },
-        { name: "Java", level: 80, icon: Code },
-        { name: "Express.js", level: 88, icon: Zap },
+        { name: "PHP", level: 90, icon: Code },
+        { name: "Laravel", level: 88, icon: Code },
+        { name: "WordPress", level: 85, icon: Code },
+        { name: "CodeIgniter", level: 82, icon: Zap },
       ]
     },
     {
-      title: "DevOps & Infrastructure",
+      title: "Programming & AI",
       icon: Container,
       color: "from-red-500 to-orange-500",
       skills: [
-        { name: "Docker", level: 92, icon: Container },
-        { name: "Kubernetes", level: 85, icon: Network },
-        { name: "Jenkins", level: 88, icon: GitBranch },
-        { name: "Terraform", level: 82, icon: Settings },
+        { name: "Python", level: 90, icon: Code },
+        { name: "Gen-AI", level: 85, icon: Cpu },
+        { name: "Streamlit", level: 88, icon: Network },
+        { name: "Machine Learning", level: 80, icon: Settings },
       ]
     },
     {
-      title: "Cloud & Databases",
+      title: "DevOps & Cloud",
       icon: Cloud,
       color: "from-yellow-500 to-orange-500",
       skills: [
-        { name: "AWS", level: 87, icon: Cloud },
-        { name: "MongoDB", level: 85, icon: Database },
-        { name: "PostgreSQL", level: 83, icon: Database },
-        { name: "Redis", level: 80, icon: Cpu },
+        { name: "Docker", level: 88, icon: Container },
+        { name: "Jenkins", level: 85, icon: GitBranch },
+        { name: "Linux", level: 90, icon: Terminal },
+        { name: "RHEL9", level: 82, icon: Cpu },
       ]
     },
     {
-      title: "Tools & Security",
+      title: "Database & Tools",
       icon: Shield,
       color: "from-orange-600 to-red-600",
       skills: [
-        { name: "Git", level: 95, icon: GitBranch },
-        { name: "Linux", level: 90, icon: Terminal },
-        { name: "Monitoring", level: 85, icon: Cpu },
-        { name: "Security", level: 78, icon: Shield },
+        { name: "MySQL", level: 90, icon: Database },
+        { name: "Git", level: 88, icon: GitBranch },
+        { name: "SSH", level: 85, icon: Terminal },
+        { name: "REST APIs", level: 87, icon: Network },
       ]
     }
   ];

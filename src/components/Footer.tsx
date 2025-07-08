@@ -67,10 +67,10 @@ const TechCircuit: React.FC = () => (
 
 const Footer = () => {
   const socialLinks = [
-    { icon: Github, href: '#', label: 'GitHub' },
-    { icon: Linkedin, href: '#', label: 'LinkedIn' },
-    { icon: Mail, href: 'mailto:vikash.kumar@example.com', label: 'Email' },
-    { icon: Phone, href: 'tel:+919876543210', label: 'Phone' },
+    { icon: Github, href: 'https://github.com/vikashkumar991', label: 'GitHub' },
+    { icon: Linkedin, href: 'https://www.linkedin.com/in/vikash-kumar-singh-784146290', label: 'LinkedIn' },
+    { icon: Mail, href: 'mailto:vks200506@gmail.com', label: 'Email' },
+    { icon: Phone, href: 'tel:9915599590', label: 'Phone' },
   ];
 
   return (

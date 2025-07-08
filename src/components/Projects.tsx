@@ -49,8 +49,8 @@ const Projects = () => {
       title: "Multi-tool AI Platform",
       description: "A comprehensive multi-tool platform with text generation, Dockerfile creation, remote Linux command execution, social media messaging, and remote Docker management.",
       tech: ["Python", "Streamlit", "Docker", "Gen-AI", "Linux"],
-      demo: "#",
-      github: "#",
+      demo: "https://www.linkedin.com/posts/vikash-kumar-singh-784146290_devops-ai-geminiai-activity-7345924663073492992-2Vk6?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEZ__NQBUPzDFDFyMk0fmXMLcHOnSbPc6k0",
+      github: "https://github.com/vikashkumar991/summer-intership-linux-world-2025/blob/main/GenAi-Prompt-MasterClass/streamlit_multitool.py",
       icon: Bot,
       color: "from-orange-500 to-red-500"
     },
@@ -58,8 +58,8 @@ const Projects = () => {
       title: "Flask CI/CD Pipeline",
       description: "Automated CI/CD pipeline using Jenkins for Flask application deployment with Docker containerization and port mapping on RHEL9.",
       tech: ["Python", "Jenkins", "Docker", "Flask", "RHEL9"],
-      demo: "#",
-      github: "#",
+      demo: "https://www.linkedin.com/posts/vikash-kumar-singh-784146290_docker-flask-devops-activity-7348102565567336448-e5D5?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEZ__NQBUPzDFDFyMk0fmXMLcHOnSbPc6k0",
+      github: "https://github.com/vikashkumar991/jenkins-first-pipeline.git",
       icon: Code,
       color: "from-red-500 to-orange-500"
     },
@@ -67,8 +67,8 @@ const Projects = () => {
       title: "HTTPD Web Server",
       description: "Dockerized Apache HTTPD web server hosting a simple portfolio website with container orchestration on RHEL9.",
       tech: ["Docker", "HTTPD", "RHEL9", "Apache", "HTML/CSS"],
-      demo: "#",
-      github: "#",
+      demo: "https://www.linkedin.com/posts/vikash-kumar-singh-784146290_devops-docker-webserver-activity-7345564078792155137-2UYi?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEZ__NQBUPzDFDFyMk0fmXMLcHOnSbPc6k0",
+      github: null,
       icon: Globe,
       color: "from-yellow-500 to-orange-500"
     },
@@ -76,8 +76,8 @@ const Projects = () => {
       title: "Docker-in-Docker (DinD)",
       description: "Python-based Docker management menu system running inside Docker containers with Docker-in-Docker capabilities for nested containerization.",
       tech: ["Docker", "Linux", "Python", "RHEL", "Container Management"],
-      demo: "#",
-      github: "#",
+      demo: "https://www.linkedin.com/posts/vikash-kumar-singh-784146290_docker-devops-python-activity-7345543468414353409-Sy4i?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEZ__NQBUPzDFDFyMk0fmXMLcHOnSbPc6k0",
+      github: null,
       icon: Container,
       color: "from-orange-600 to-red-600"
     },
@@ -85,8 +85,8 @@ const Projects = () => {
       title: "AI Code Generator",
       description: "Intelligent code generation tool powered by generative AI and Gradio interface for creating remaining code snippets and completing projects.",
       tech: ["Gen-AI", "Python", "Gradio", "LLM", "Prompt Engineering"],
-      demo: "#",
-      github: "#",
+      demo: "https://www.linkedin.com/posts/vikash-kumar-singh-784146290_genai-googlegemini-python-activity-7345405301245755392-bc5e?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEZ__NQBUPzDFDFyMk0fmXMLcHOnSbPc6k0",
+      github: "https://github.com/vikashkumar991/summer-intership-linux-world-2025/blob/main/GenAi-Prompt-MasterClass/code-editor.py",
       icon: Brain,
       color: "from-red-600 to-orange-600"
     },
@@ -94,8 +94,8 @@ const Projects = () => {
       title: "AI Project Manager",
       description: "Smart project management tool providing AI-powered suggestions and advice for project planning and execution using generative AI.",
       tech: ["Python", "Gen-AI", "Gradio", "LLM", "Project Management"],
-      demo: "#",
-      github: "#",
+      demo: "https://www.linkedin.com/posts/vikash-kumar-singh-784146290_ai-gemini-python-activity-7345191774480408576-hJ2K?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEZ__NQBUPzDFDFyMk0fmXMLcHOnSbPc6k0",
+      github: "https://github.com/vikashkumar991/summer-intership-linux-world-2025/blob/main/GenAi-Prompt-MasterClass/Untitled.ipynb",
       icon: Zap,
       color: "from-orange-500 to-yellow-500"
     },
@@ -103,8 +103,8 @@ const Projects = () => {
       title: "Remote Docker Manager",
       description: "Streamlit-based tool for remote Docker container management via SSH connections, providing full Docker lifecycle control from anywhere.",
       tech: ["Python", "SSH", "Docker", "Streamlit", "Remote Management"],
-      demo: "#",
-      github: "#",
+      demo: "https://www.linkedin.com/posts/vikash-kumar-singh-784146290_linuxworld-vimaldagasir-devops-activity-7345163489528659969-CXvE?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEZ__NQBUPzDFDFyMk0fmXMLcHOnSbPc6k0",
+      github: "https://github.com/vikashkumar991/summer-intership-linux-world-2025/blob/main/python-projects-all/docker_streamlit.py",
       icon: Monitor,
       color: "from-purple-500 to-orange-500"
     },
@@ -112,8 +112,8 @@ const Projects = () => {
       title: "Productivity Predictor",
       description: "Machine learning model for predicting productivity issues in office environments with real-time analysis and recommendations.",
       tech: ["Python", "Machine Learning", "Streamlit", "Data Analysis", "Predictive Modeling"],
-      demo: "#",
-      github: "#",
+      demo: "https://www.linkedin.com/posts/vikash-kumar-singh-784146290_machinelearning-streamlit-python-activity-7345183462372360192-YKe-?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEZ__NQBUPzDFDFyMk0fmXMLcHOnSbPc6k0",
+      github: "https://github.com/vikashkumar991/summer-intership-linux-world-2025/blob/main/python-projects-all/streamlit-job-productivity.py",
       icon: Cpu,
       color: "from-blue-500 to-orange-500"
     },
@@ -250,15 +250,17 @@ const Projects = () => {
                       <ExternalLink className="w-4 h-4" />
                       Demo
                     </motion.a>
-                    <motion.a
-                      href={project.github}
-                      className="flex items-center gap-2 px-4 py-2 bg-white/10 text-white rounded-full text-sm hover:bg-orange-500/20 transition-all duration-300 border border-orange-500/30"
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                    >
-                      <Github className="w-4 h-4" />
-                      Code
-                    </motion.a>
+                    {project.github && (
+                      <motion.a
+                        href={project.github}
+                        className="flex items-center gap-2 px-4 py-2 bg-white/10 text-white rounded-full text-sm hover:bg-orange-500/20 transition-all duration-300 border border-orange-500/30"
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                      >
+                        <Github className="w-4 h-4" />
+                        Code
+                      </motion.a>
+                    )}
                   </div>
                 </div>
               </motion.div>

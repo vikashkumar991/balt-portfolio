@@ -118,7 +118,10 @@ const Hero = () => {
 
           {/* Action Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
-            <motion.button
+            <motion.a
+              href="https://drive.google.com/file/d/1mL-aFfKzR1ANtA7oMEAX89_DWThrKfQM/view?usp=sharing"
+              target="_blank"
+              rel="noopener noreferrer"
               className="group bg-gradient-to-r from-orange-500 to-red-500 text-white px-8 py-3 rounded-full font-semibold hover:from-orange-600 hover:to-red-600 transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-orange-500/25"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -127,25 +130,29 @@ const Hero = () => {
                 <Download className="w-5 h-5 group-hover:animate-bounce" />
                 Download Resume
               </div>
-            </motion.button>
+            </motion.a>
             
             <div className="flex gap-4">
               <motion.a
-                href="#"
+                href="https://github.com/vikashkumar991"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="p-3 bg-white/10 rounded-full hover:bg-white/20 transition-all duration-300 hover:scale-110"
                 whileHover={{ scale: 1.1 }}
               >
                 <Github className="w-6 h-6 text-white" />
               </motion.a>
               <motion.a
-                href="#"
+                href="https://www.linkedin.com/in/vikash-kumar-singh-784146290"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="p-3 bg-white/10 rounded-full hover:bg-white/20 transition-all duration-300 hover:scale-110"
                 whileHover={{ scale: 1.1 }}
               >
                 <Linkedin className="w-6 h-6 text-white" />
               </motion.a>
               <motion.a
-                href="#"
+                href="mailto:vks200506@gmail.com"
                 className="p-3 bg-white/10 rounded-full hover:bg-white/20 transition-all duration-300 hover:scale-110"
                 whileHover={{ scale: 1.1 }}
               >

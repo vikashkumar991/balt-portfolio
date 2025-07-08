@@ -84,43 +84,43 @@ const MapEffect: React.FC = () => (
 const Experience = () => {
   const experiences = [
     {
-      title: "Senior DevOps Engineer",
-      company: "TechCorp Solutions",
-      location: "Remote",
-      period: "2023 - Present",
+      title: "WordPress Developer",
+      company: "Avaptech Solutions",
+      location: "Mohali, India",
+      period: "2023 - 2024",
       responsibilities: [
-        "Led infrastructure automation reducing deployment time by 70%",
-        "Implemented Kubernetes clusters serving 100K+ daily users",
-        "Designed CI/CD pipelines for 50+ microservices",
-        "Mentored junior developers on DevOps best practices"
+        "Developed custom WordPress themes and plugins for client websites",
+        "Optimized website performance and implemented SEO best practices",
+        "Collaborated with design team to create responsive web solutions",
+        "Maintained and updated existing WordPress installations"
       ],
-      technologies: ["Kubernetes", "Docker", "AWS", "Terraform", "Jenkins"]
+      technologies: ["WordPress", "PHP", "MySQL", "JavaScript", "CSS"]
     },
     {
       title: "Backend Developer",
-      company: "InnovateTech",
-      location: "Chandigarh, India",
-      period: "2021 - 2023",
+      company: "TCA Company",
+      location: "Ludhiana, India",
+      period: "2022 - 2023",
       responsibilities: [
-        "Developed scalable REST APIs handling 1M+ requests daily",
-        "Optimized database queries improving response time by 60%",
-        "Implemented microservices architecture for e-commerce platform",
-        "Collaborated with cross-functional teams on feature development"
+        "Built robust backend systems using PHP and Laravel framework",
+        "Developed RESTful APIs and integrated third-party services",
+        "Implemented CodeIgniter framework for rapid development",
+        "Optimized database queries and improved application performance"
       ],
-      technologies: ["Node.js", "Express", "MongoDB", "Redis", "Docker"]
+      technologies: ["PHP", "Laravel", "CodeIgniter", "MySQL", "REST APIs"]
     },
     {
-      title: "Junior DevOps Engineer",
-      company: "StartupHub",
-      location: "Delhi, India",
-      period: "2020 - 2021",
+      title: "Backend Developer",
+      company: "Duke Infosys",
+      location: "Chandigarh Sector 45, India",
+      period: "2021 - 2022",
       responsibilities: [
-        "Automated deployment processes using GitHub Actions",
-        "Managed AWS infrastructure and cost optimization",
-        "Implemented monitoring and alerting systems",
-        "Maintained development and staging environments"
+        "Specialized in Laravel framework development and architecture",
+        "Created scalable web applications with clean code practices",
+        "Implemented authentication and authorization systems",
+        "Collaborated with frontend team for seamless integration"
       ],
-      technologies: ["AWS", "GitHub Actions", "Prometheus", "Grafana"]
+      technologies: ["Laravel", "PHP", "MySQL", "Git", "MVC Architecture"]
     }
   ];
 
