@@ -72,7 +72,7 @@ const EnhancedSmokeEffect: React.FC = () => (
 );
 
 const EnhancedFloatingBubbles: React.FC = () => (
-  <div className="absolute inset-0 w-full h-full pointer-events-none z-0">
+  <div className="fixed inset-0 w-full h-full pointer-events-none z-20">
     {[...Array(35)].map((_, i) => (
       <div
         key={i}
@@ -95,8 +95,9 @@ const EnhancedFloatingBubbles: React.FC = () => (
     <style>{`
       .floating-bubble {
         position: absolute;
-        bottom: -100px;
+        bottom: -50px;
         animation: bubble-float linear infinite;
+        z-index: 25;
       }
       
       .bubble-inner {
@@ -108,8 +109,8 @@ const EnhancedFloatingBubbles: React.FC = () => (
           transparent
         );
         border-radius: 50%;
-        filter: blur(0.5px);
-        opacity: 0.8;
+        filter: blur(0.3px);
+        opacity: 0.9;
       }
       
       .enhanced-bubble-inner {
@@ -138,27 +139,27 @@ const EnhancedFloatingBubbles: React.FC = () => (
       
       @keyframes bubble-float {
         0% { 
-          transform: translateY(0) translateX(0) scale(0.5); 
+          transform: translateY(0) translateX(0) scale(0.3); 
           opacity: 0; 
         }
         10% { 
-          opacity: 0.8; 
-          transform: translateY(-50px) translateX(5px) scale(0.7);
+          opacity: 0.9; 
+          transform: translateY(-100px) translateX(5px) scale(0.5);
         }
         20% { 
           opacity: 1; 
-          transform: translateY(-100px) translateX(10px) scale(0.9);
+          transform: translateY(-200px) translateX(10px) scale(0.7);
         }
         80% { 
-          opacity: 0.9; 
-          transform: translateY(-80vh) translateX(30px) scale(1.1);
+          opacity: 0.8; 
+          transform: translateY(-70vh) translateX(30px) scale(1.0);
         }
         95% { 
-          opacity: 0.3; 
-          transform: translateY(-95vh) translateX(40px) scale(1.3);
+          opacity: 0.4; 
+          transform: translateY(-90vh) translateX(40px) scale(1.2);
         }
         100% { 
-          transform: translateY(-110vh) translateX(50px) scale(1.5); 
+          transform: translateY(-100vh) translateX(50px) scale(1.4); 
           opacity: 0; 
         }
       }
