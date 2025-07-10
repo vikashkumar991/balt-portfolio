@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { AnimatePresence } from 'framer-motion';
 import IntroLoader from './components/IntroLoader';
 import CursorFollower from './components/CursorFollower';
@@ -17,20 +17,71 @@ import Footer from './components/Footer';
 
 function App() {
   const [showIntro, setShowIntro] = useState(true);
+  const [isOnline, setIsOnline] = useState(navigator.onLine);
+  const [isLoading, setIsLoading] = useState(true);
+
+  // Handle online/offline status
+  useEffect(() => {
+    const handleOnline = () => setIsOnline(true);
+    const handleOffline = () => setIsOnline(false);
+
+    window.addEventListener('online', handleOnline);
+    window.addEventListener('offline', handleOffline);
+
+    return () => {
+      window.removeEventListener('online', handleOnline);
+      window.removeEventListener('offline', handleOffline);
+    };
+  }, []);
+
+  // Handle initial loading
+  useEffect(() => {
+    // Ensure loader shows for at least 2 seconds
+    const minLoadTime = setTimeout(() => {
+      setIsLoading(false);
+    }, 2000);
+
+    // Check if all resources are loaded
+    const handleLoad = () => {
+      // Wait for minimum load time before allowing completion
+      setTimeout(() => {
+        setIsLoading(false);
+      }, 2000);
+    };
+
+    if (document.readyState === 'complete') {
+      handleLoad();
+    } else {
+      window.addEventListener('load', handleLoad);
+    }
+
+    return () => {
+      clearTimeout(minLoadTime);
+      window.removeEventListener('load', handleLoad);
+    };
+  }, []);
 
   const handleIntroComplete = () => {
     setShowIntro(false);
   };
 
+  // Show loader if still loading or if intro is showing
+  const shouldShowLoader = isLoading || showIntro;
+
   return (
     <>
-      <AnimatePresence>
-        {showIntro && (
-          <IntroLoader onComplete={handleIntroComplete} />
+      <AnimatePresence mode="wait">
+        {shouldShowLoader && (
+          <IntroLoader 
+            key="intro-loader"
+            onComplete={handleIntroComplete} 
+            isOnline={isOnline}
+            isInitialLoad={isLoading}
+          />
         )}
       </AnimatePresence>
       
-      {!showIntro && (
+      {!shouldShowLoader && (
         <div className="min-h-screen bg-black text-white">
           <CursorFollower />
           <Navbar />
