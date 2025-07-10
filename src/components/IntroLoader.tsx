@@ -123,7 +123,6 @@ const DataStream: React.FC = () => (
 const IntroLoader: React.FC<{ onComplete: () => void }> = ({ onComplete }) => {
   const [progress, setProgress] = useState(0);
   const [currentPhase, setCurrentPhase] = useState(0);
-  const [showQuote, setShowQuote] = useState(false);
 
   const phases = [
     "Initializing Systems...",
@@ -136,37 +135,25 @@ const IntroLoader: React.FC<{ onComplete: () => void }> = ({ onComplete }) => {
   useEffect(() => {
     const timer = setInterval(() => {
       setProgress(prev => {
-        const newProgress = prev + 1.5;
+        const newProgress = prev + 2;
         
         // Update phase based on progress
         const phaseIndex = Math.floor((newProgress / 100) * phases.length);
         setCurrentPhase(Math.min(phaseIndex, phases.length - 1));
         
-        // Show quote at 60% progress
-        if (newProgress >= 60 && !showQuote) {
-          setShowQuote(true);
-        }
-        
         if (newProgress >= 100) {
           setTimeout(() => {
             onComplete();
-          }, 1000);
+          }, 500);
           clearInterval(timer);
           return 100;
         }
         return newProgress;
       });
-    }, 80);
+    }, 60);
 
     return () => clearInterval(timer);
-  }, [onComplete, showQuote]);
-
-  const quoteWords = [
-    "Technology", "changes.", "All", "the", "time.", "Our", "knowledge", "is", "our", "value.",
-    "We", "have", "to", "keep", "up", "with", "the", "latest", "technology", "changes", "and", "updates.",
-    "So,", "let's", "understand", "instead", "of", "memorizing,", "let's", "see", "instead", "of", "hearing,",
-    "let's", "learn", "instead", "of", "ignoring,", "let's", "demonstrate", "instead", "of", "assuming."
-  ];
+  }, [onComplete]);
 
   return (
     <motion.div
@@ -198,7 +185,7 @@ const IntroLoader: React.FC<{ onComplete: () => void }> = ({ onComplete }) => {
           initial={{ y: 30, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.5, duration: 0.8 }}
-          className="mb-8"
+          className="mb-12"
         >
           <h1 className="text-4xl md:text-6xl font-bold text-white mb-2">
             <span className="bg-gradient-to-r from-orange-500 to-red-500 bg-clip-text text-transparent">
@@ -207,46 +194,6 @@ const IntroLoader: React.FC<{ onComplete: () => void }> = ({ onComplete }) => {
           </h1>
           <p className="text-xl text-gray-300">DevOps & Backend Developer</p>
         </motion.div>
-
-        {/* Inspirational Quote */}
-        <AnimatePresence>
-          {showQuote && (
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              className="mb-12 max-w-3xl mx-auto"
-            >
-              <div className="glassmorphism p-8 rounded-2xl border border-orange-500/20">
-                <motion.div className="text-lg md:text-xl text-gray-200 leading-relaxed">
-                  {quoteWords.map((word, index) => (
-                    <motion.span
-                      key={index}
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      transition={{ delay: index * 0.1 }}
-                      className={`inline-block mr-2 ${
-                        ['Technology', 'knowledge', 'understand', 'learn', 'demonstrate'].includes(word.replace(/[.,]/g, ''))
-                          ? 'text-orange-400 font-semibold'
-                          : ''
-                      }`}
-                    >
-                      {word}
-                    </motion.span>
-                  ))}
-                </motion.div>
-                <motion.p
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 2 }}
-                  className="text-sm text-gray-400 mt-4 italic"
-                >
-                  - Philosophy of Continuous Learning
-                </motion.p>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
 
         {/* Progress Section */}
         <motion.div

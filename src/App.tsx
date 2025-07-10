@@ -5,6 +5,7 @@ import IntroLoader from './components/IntroLoader';
 import CursorFollower from './components/CursorFollower';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
+import QuoteSection from './components/QuoteSection';
 import About from './components/About';
 import Skills from './components/Skills';
 import Projects from './components/Projects';
@@ -34,6 +35,7 @@ function App() {
           <CursorFollower />
           <Navbar />
           <Hero />
+          <QuoteSection />
           <About />
           <Skills />
           <Projects />

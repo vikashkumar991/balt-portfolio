@@ -2,6 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Prevent flash of white background */
+html, body, #root {
+  background-color: #000000;
+  margin: 0;
+  padding: 0;
+}
+
 /* Custom Glassmorphism */
 .glassmorphism {
   background: rgba(255, 255, 255, 0.1);
