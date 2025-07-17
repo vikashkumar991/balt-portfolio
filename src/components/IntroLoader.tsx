@@ -249,9 +249,11 @@ const IntroLoader: React.FC<IntroLoaderProps> = ({ onComplete, isOnline, isIniti
           className="mb-8"
         >
           <h1 className="text-4xl md:text-6xl font-bold text-white mb-2">
-            Vikash Kumar Singh
+            <span className="bg-gradient-to-r from-orange-500 to-red-500 bg-clip-text text-transparent">
+              Vikash Kumar Singh
+            </span>
           </h1>
-          <p className="text-xl text-orange-300">DevOps & Backend Developer</p>
+          <p className="text-xl text-gray-300">DevOps & Backend Developer</p>
         </motion.div>
 
         {/* Connectivity Status */}
