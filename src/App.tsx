@@ -1,19 +1,13 @@
 import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { AnimatePresence } from 'framer-motion';
 import IntroLoader from './components/IntroLoader';
 import CursorFollower from './components/CursorFollower';
-import Navbar from './components/Navbar';
-import Hero from './components/Hero';
-import QuoteSection from './components/QuoteSection';
-import About from './components/About';
-import Skills from './components/Skills';
-import Projects from './components/Projects';
-import Experience from './components/Experience';
-import MemeSection from './components/MemeSection';
-import Blog from './components/Blog';
-import Contact from './components/Contact';
-import Footer from './components/Footer';
+import Portfolio from './pages/Portfolio';
+import AdminLogin from './pages/AdminLogin';
+import AdminDashboard from './pages/AdminDashboard';
+import ChatBot from './components/ChatBot';
 
 function App() {
   const [showIntro, setShowIntro] = useState(true);
@@ -36,14 +30,11 @@ function App() {
 
   // Handle initial loading
   useEffect(() => {
-    // Ensure loader shows for at least 2 seconds
     const minLoadTime = setTimeout(() => {
       setIsLoading(false);
     }, 2000);
 
-    // Check if all resources are loaded
     const handleLoad = () => {
-      // Wait for minimum load time before allowing completion
       setTimeout(() => {
         setIsLoading(false);
       }, 2000);
@@ -65,39 +56,35 @@ function App() {
     setShowIntro(false);
   };
 
-  // Show loader if still loading or if intro is showing
   const shouldShowLoader = isLoading || showIntro;
 
   return (
-    <>
-      <AnimatePresence mode="wait">
-        {shouldShowLoader && (
-          <IntroLoader 
-            key="intro-loader"
-            onComplete={handleIntroComplete} 
-            isOnline={isOnline}
-            isInitialLoad={isLoading}
-          />
+    <Router>
+      <div className="min-h-screen bg-black text-white">
+        <AnimatePresence mode="wait">
+          {shouldShowLoader && (
+            <IntroLoader 
+              key="intro-loader"
+              onComplete={handleIntroComplete} 
+              isOnline={isOnline}
+              isInitialLoad={isLoading}
+            />
+          )}
+        </AnimatePresence>
+        
+        {!shouldShowLoader && (
+          <>
+            <CursorFollower />
+            <Routes>
+              <Route path="/" element={<Portfolio />} />
+              <Route path="/admin" element={<AdminLogin />} />
+              <Route path="/admin/dashboard" element={<AdminDashboard />} />
+            </Routes>
+            <ChatBot />
+          </>
         )}
-      </AnimatePresence>
-      
-      {!shouldShowLoader && (
-        <div className="min-h-screen bg-black text-white">
-          <CursorFollower />
-          <Navbar />
-          <Hero />
-          <QuoteSection />
-          <About />
-          <Skills />
-          <Projects />
-          <Experience />
-          <MemeSection />
-          <Blog />
-          <Contact />
-          <Footer />
-        </div>
-      )}
-    </>
+      </div>
+    </Router>
   );
 }
 

@@ -48,8 +48,27 @@ const Contact = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission
-    console.log('Form submitted:', formData);
+    
+    // Create contact message object
+    const contactMessage = {
+      id: Date.now().toString(),
+      name: formData.name,
+      email: formData.email,
+      message: formData.message,
+      timestamp: new Date().toISOString(),
+      status: 'new' as const
+    };
+    
+    // Save to localStorage
+    const existingMessages = JSON.parse(localStorage.getItem('contactMessages') || '[]');
+    const updatedMessages = [contactMessage, ...existingMessages];
+    localStorage.setItem('contactMessages', JSON.stringify(updatedMessages));
+    
+    // Reset form
+    setFormData({ name: '', email: '', message: '' });
+    
+    // Show success message (you can implement a toast notification here)
+    alert('Thank you for your message! I will get back to you soon.');
   };
 
   return (
