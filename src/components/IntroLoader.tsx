@@ -14,11 +14,11 @@ const TechOrbit: React.FC = () => {
   ];
 
   return (
-    <div className="relative w-64 h-64 mx-auto mb-12">
+    <div className="relative w-80 h-80 mx-auto mb-12">
       {/* Central Core */}
       <div className="absolute inset-0 flex items-center justify-center">
         <motion.div
-          className="w-20 h-20 rounded-full bg-gradient-to-r from-orange-500 to-red-500 flex items-center justify-center overflow-hidden border-2 border-orange-400"
+          className="w-32 h-32 rounded-full bg-gradient-to-r from-orange-500 to-red-500 flex items-center justify-center overflow-hidden border-4 border-orange-400 shadow-2xl"
           animate={{
             scale: [1, 1.1, 1],
             boxShadow: [
@@ -32,8 +32,11 @@ const TechOrbit: React.FC = () => {
           <img
             src={profileImg}
             alt="Profile"
-            className="w-full h-full object-cover"
-            style={{ filter: 'brightness(1.1) contrast(1.1)' }}
+            className="w-full h-full object-cover transform scale-110"
+            style={{ 
+              filter: 'brightness(1.1) contrast(1.1)',
+              transform: 'scaleX(1) scaleY(1)'
+            }}
           />
         </motion.div>
       </div>
@@ -41,17 +44,17 @@ const TechOrbit: React.FC = () => {
       {/* Orbiting Tech Icons */}
       {techIcons.map((tech, index) => {
         const angle = (2 * Math.PI * index) / techIcons.length;
-        const radius = 100;
+        const radius = 140;
         
         return (
           <motion.div
             key={index}
-            className="absolute w-12 h-12 flex items-center justify-center rounded-full bg-white/10 backdrop-blur-sm border border-white/20"
+            className="absolute w-16 h-16 flex items-center justify-center rounded-full bg-white/10 backdrop-blur-sm border border-white/20 shadow-lg"
             style={{
               left: '50%',
               top: '50%',
-              marginLeft: -24,
-              marginTop: -24,
+              marginLeft: -32,
+              marginTop: -32,
             }}
             animate={{
               x: Math.cos(angle) * radius,
@@ -65,32 +68,32 @@ const TechOrbit: React.FC = () => {
               delay: tech.delay,
             }}
           >
-            <tech.icon className="w-6 h-6" style={{ color: tech.color }} />
+            <tech.icon className="w-8 h-8" style={{ color: tech.color }} />
           </motion.div>
         );
       })}
 
       {/* Orbital Rings */}
       <div className="absolute inset-0">
-        <svg className="w-full h-full" viewBox="0 0 256 256">
+        <svg className="w-full h-full" viewBox="0 0 320 320">
           <circle
-            cx="128"
-            cy="128"
-            r="100"
+            cx="160"
+            cy="160"
+            r="140"
             fill="none"
             stroke="rgba(255, 107, 53, 0.3)"
-            strokeWidth="1"
+            strokeWidth="2"
             strokeDasharray="4 8"
             className="animate-spin"
             style={{ animationDuration: '20s' }}
           />
           <circle
-            cx="128"
-            cy="128"
-            r="120"
+            cx="160"
+            cy="160"
+            r="160"
             fill="none"
             stroke="rgba(255, 140, 66, 0.2)"
-            strokeWidth="1"
+            strokeWidth="2"
             strokeDasharray="2 6"
             className="animate-spin"
             style={{ animationDuration: '30s', animationDirection: 'reverse' }}
