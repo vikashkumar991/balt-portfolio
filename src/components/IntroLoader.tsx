@@ -15,66 +15,8 @@ const TechOrbit: React.FC = () => {
 
   return (
     <div className="relative w-80 h-80 mx-auto mb-12">
-      {/* Central Core */}
-      <div className="absolute inset-0 flex items-center justify-center">
-        <motion.div
-          className="w-32 h-32 rounded-full bg-gradient-to-r from-orange-500 to-red-500 flex items-center justify-center overflow-hidden border-4 border-orange-400 shadow-2xl"
-          animate={{
-            scale: [1, 1.1, 1],
-            boxShadow: [
-              '0 0 20px rgba(255, 107, 53, 0.5)',
-              '0 0 40px rgba(255, 107, 53, 0.8)',
-              '0 0 20px rgba(255, 107, 53, 0.5)'
-            ]
-          }}
-          transition={{ duration: 2, repeat: Infinity }}
-        >
-          <img
-            src={profileImg}
-            alt="Profile"
-            className="w-full h-full object-cover transform scale-110"
-            style={{ 
-              filter: 'brightness(1.1) contrast(1.1)',
-              transform: 'scaleX(1) scaleY(1)'
-            }}
-          />
-        </motion.div>
-      </div>
-
-      {/* Orbiting Tech Icons */}
-      {techIcons.map((tech, index) => {
-        const angle = (2 * Math.PI * index) / techIcons.length;
-        const radius = 140;
-        
-        return (
-          <motion.div
-            key={index}
-            className="absolute w-16 h-16 flex items-center justify-center rounded-full bg-white/10 backdrop-blur-sm border border-white/20 shadow-lg"
-            style={{
-              left: '50%',
-              top: '50%',
-              marginLeft: -32,
-              marginTop: -32,
-            }}
-            animate={{
-              x: Math.cos(angle) * radius,
-              y: Math.sin(angle) * radius,
-              rotate: 360,
-            }}
-            transition={{
-              duration: 8,
-              repeat: Infinity,
-              ease: "linear",
-              delay: tech.delay,
-            }}
-          >
-            <tech.icon className="w-8 h-8" style={{ color: tech.color }} />
-          </motion.div>
-        );
-      })}
-
-      {/* Orbital Rings */}
-      <div className="absolute inset-0">
+      {/* Orbital Rings - Behind everything */}
+      <div className="absolute inset-0 z-0">
         <svg className="w-full h-full" viewBox="0 0 320 320">
           <circle
             cx="160"
@@ -99,6 +41,63 @@ const TechOrbit: React.FC = () => {
             style={{ animationDuration: '30s', animationDirection: 'reverse' }}
           />
         </svg>
+      </div>
+
+      {/* Orbiting Tech Icons - Middle layer */}
+      {techIcons.map((tech, index) => {
+        const angle = (2 * Math.PI * index) / techIcons.length;
+        const radius = 140;
+        
+        return (
+          <motion.div
+            key={index}
+            className="absolute w-16 h-16 flex items-center justify-center rounded-full bg-white/10 backdrop-blur-sm border border-white/20 shadow-lg z-10"
+            style={{
+              left: '50%',
+              top: '50%',
+              marginLeft: -32,
+              marginTop: -32,
+            }}
+            animate={{
+              x: Math.cos(angle) * radius,
+              y: Math.sin(angle) * radius,
+              rotate: 360,
+            }}
+            transition={{
+              duration: 8,
+              repeat: Infinity,
+              ease: "linear",
+              delay: tech.delay,
+            }}
+          >
+            <tech.icon className="w-8 h-8" style={{ color: tech.color }} />
+          </motion.div>
+        );
+      })}
+
+      {/* Central Core - Front layer */}
+      <div className="absolute inset-0 flex items-center justify-center z-20">
+        <motion.div
+          className="w-32 h-32 rounded-full bg-gradient-to-r from-orange-500 to-red-500 flex items-center justify-center overflow-hidden border-4 border-orange-400 shadow-2xl"
+          animate={{
+            scale: [1, 1.1, 1],
+            boxShadow: [
+              '0 0 20px rgba(255, 107, 53, 0.5)',
+              '0 0 40px rgba(255, 107, 53, 0.8)',
+              '0 0 20px rgba(255, 107, 53, 0.5)'
+            ]
+          }}
+          transition={{ duration: 2, repeat: Infinity }}
+        >
+          <img
+            src={profileImg}
+            alt="Profile"
+            className="w-full h-full object-cover"
+            style={{ 
+              filter: 'brightness(1.1) contrast(1.1)',
+            }}
+          />
+        </motion.div>
       </div>
     </div>
   );
