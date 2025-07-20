@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Code, Cpu, Database, Server, Cloud, Terminal, Wifi, WifiOff, RefreshCw } from 'lucide-react';
+import profileImg from '../assets/profile.png';
 
 const TechOrbit: React.FC = () => {
   const techIcons = [
@@ -17,7 +18,7 @@ const TechOrbit: React.FC = () => {
       {/* Central Core */}
       <div className="absolute inset-0 flex items-center justify-center">
         <motion.div
-          className="w-20 h-20 rounded-full bg-gradient-to-r from-orange-500 to-red-500 flex items-center justify-center"
+          className="w-20 h-20 rounded-full bg-gradient-to-r from-orange-500 to-red-500 flex items-center justify-center overflow-hidden border-2 border-orange-400"
           animate={{
             scale: [1, 1.1, 1],
             boxShadow: [
@@ -28,7 +29,12 @@ const TechOrbit: React.FC = () => {
           }}
           transition={{ duration: 2, repeat: Infinity }}
         >
-          <Code className="w-10 h-10 text-white" />
+          <img
+            src={profileImg}
+            alt="Profile"
+            className="w-full h-full object-cover"
+            style={{ filter: 'brightness(1.1) contrast(1.1)' }}
+          />
         </motion.div>
       </div>
 
